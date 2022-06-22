@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  Location="CATALOG" Catalog="SASHELP.EMSAMP.Fimport.SOURCE" ImportType="Local" GuessRows="500"
+ Delimiter="," NameRow="Y" SkipRows="0" MaxRows="1000000" MaxCols="10000" FileType="csv"
+ Role="TRAIN" ForceRun="N" Summarize="N" AdvancedAdvisor="Y" RunAction="Train" Component="FileImport"
+ IFileName="H:\DMU_Final Year\Data Mining\CourseWork_Materials\organics2020v2 (1).csv"
+ AccessTable="NoTableName" UserID="NoUserID" Password="NoPassword" RawCreateTime="1952084390.4"
+ CreateTime="09NOV2021:13:39:50" RunId="d0875c57-8feb-4eb5-b3cb-87fe0a54e085" RawLastTimeRun="1953810922.3"
+ RawRunTime="10.642999887" LastTimeRun="29NOV2021:13:15:22" RunTime="0 Hr. 0 Min. 10.64 Sec."
+>
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES ><![CDATA[
+USERTRAINCODE
+USERSCORECODE
+USERREPORTCODE
+VARIABLESETDELTA
+DELTACODE
+]]>
+</FILEPROPERTIES></_ROOT_>

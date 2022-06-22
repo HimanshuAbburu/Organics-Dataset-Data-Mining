@@ -1,0 +1,196 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Fit Statistics
+
+Target=ORGYN Target Label=' '
+
+   Fit
+Statistics    Statistics Label                    Train    Validation       Test
+
+ _AIC_        Akaike's Information Criterion    3607.72          .           .  
+ _ASE_        Average Squared Error                0.14         0.14        0.14
+ _AVERR_      Average Error Function               0.45         0.46        0.45
+ _DFE_        Degrees of Freedom for Error      3991.00          .           .  
+ _DFM_        Model Degrees of Freedom             9.00          .           .  
+ _DFT_        Total Degrees of Freedom          4000.00          .           .  
+ _DIV_        Divisor for ASE                   8000.00      6000.00     6000.00
+ _ERR_        Error Function                    3589.72      2735.99     2712.93
+ _FPE_        Final Prediction Error               0.14          .           .  
+ _MAX_        Maximum Absolute Error               0.99         0.99        1.00
+ _MSE_        Mean Square Error                    0.14         0.14        0.14
+ _NOBS_       Sum of Frequencies                4000.00      3000.00     3000.00
+ _NW_         Number of Estimate Weights           9.00          .           .  
+ _RASE_       Root Average Sum of Squares          0.38         0.38        0.38
+ _RFPE_       Root Final Prediction Error          0.38          .           .  
+ _RMSE_       Root Mean Squared Error              0.38         0.38        0.38
+ _SBC_        Schwarz's Bayesian Criterion      3664.36          .           .  
+ _SSE_        Sum of Squared Errors             1140.24       867.47      863.39
+ _SUMW_       Sum of Case Weights Times Freq    8000.00      6000.00     6000.00
+ _MISC_       Misclassification Rate               0.19         0.19        0.19
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Classification Table
+
+Data Role=TRAIN Target Variable=ORGYN Target Label=' '
+
+                       Target        Outcome     Frequency       Total
+Target    Outcome    Percentage    Percentage      Count      Percentage
+
+  0          0         82.6624       95.0099        2875        71.875  
+  1          0         17.3376       61.9097         603        15.075  
+  0          1         28.9272        4.9901         151         3.775  
+  1          1         71.0728       38.0903         371         9.275  
+
+
+Data Role=VALIDATE Target Variable=ORGYN Target Label=' '
+
+                       Target        Outcome     Frequency       Total
+Target    Outcome    Percentage    Percentage      Count      Percentage
+
+  0          0         81.8318       96.0352        2180        72.6667 
+  1          0         18.1682       66.3014         484        16.1333 
+  0          1         26.7857        3.9648          90         3.0000 
+  1          1         73.2143       33.6986         246         8.2000 
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Event Classification Table
+
+Data Role=TRAIN Target=ORGYN Target Label=' '
+
+  False       True        False       True
+Negative    Negative    Positive    Positive
+
+   603        2875         151         371  
+
+
+Data Role=VALIDATE Target=ORGYN Target Label=' '
+
+  False       True        False       True
+Negative    Negative    Positive    Positive
+
+   484        2180         90          246  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Assessment Score Rankings
+
+Data Role=TRAIN Target Variable=ORGYN Target Label=' '
+
+                                                                                           Mean
+                               Cumulative        %       Cumulative      Number of      Posterior
+Depth       Gain      Lift        Lift       Response    % Response    Observations    Probability
+
+   5     251.129    3.51129      3.51129      85.5000      85.5000          200          0.80044  
+  10     212.799    2.74470      3.12799      66.8333      76.1667          200          0.62235  
+  15     179.945    2.14237      2.79945      52.1667      68.1667          200          0.50827  
+  20     149.658    1.58795      2.49658      38.6667      60.7917          200          0.42904  
+  25     123.409    1.18412      2.23409      28.8333      54.4000          200          0.35892  
+  30     102.430    0.97536      2.02430      23.7500      49.2917          200          0.29567  
+  35      84.993    0.80374      1.84993      19.5711      45.0459          200          0.26035  
+  40      71.479    0.76880      1.71479      18.7204      41.7552          200          0.25901  
+  45      60.968    0.76880      1.60968      18.7204      39.1958          200          0.25901  
+  50      52.559    0.76880      1.52559      18.7204      37.1482          200          0.25901  
+  55      47.159    0.93160      1.47159      22.6844      35.8333          200          0.25184  
+  60      41.342    0.77344      1.41342      18.8333      34.4167          200          0.21391  
+  65      35.208    0.61602      1.35208      15.0000      32.9231          200          0.17399  
+  70      30.573    0.70329      1.30573      17.1250      31.7946          200          0.14357  
+  75      24.709    0.42608      1.24709      10.3750      30.3667          200          0.11337  
+  80      19.097    0.34908      1.19097       8.5000      29.0000          200          0.08840  
+  85      13.903    0.30801      1.13903       7.5000      27.7353          200          0.06925  
+  90       9.628    0.36961      1.09628       9.0000      26.6944          200          0.05007  
+  95       5.155    0.24641      1.05155       6.0000      25.6053          200          0.03046  
+ 100       0.000    0.02053      1.00000       0.5000      24.3500          200          0.01254  
+
+
+Data Role=VALIDATE Target Variable=ORGYN Target Label=' '
+
+                                                                                           Mean
+                               Cumulative        %       Cumulative      Number of      Posterior
+Depth       Gain      Lift        Lift       Response    % Response    Observations    Probability
+
+   5     256.164    3.56164      3.56164      86.6667      86.6667          150          0.78453  
+  10     209.589    2.63014      3.09589      64.0000      75.3333          150          0.59430  
+  15     175.799    2.08219      2.75799      50.6667      67.1111          150          0.47594  
+  20     141.781    1.39726      2.41781      34.0000      58.8333          150          0.39316  
+  25     120.822    1.36986      2.20822      33.3333      53.7333          150          0.32938  
+  30      99.642    0.93741      1.99642      22.8104      48.5795          150          0.27517  
+  35      81.854    0.75128      1.81854      18.2810      44.2512          150          0.25901  
+  40      68.513    0.75128      1.68513      18.2810      41.0049          150          0.25901  
+  45      58.137    0.75128      1.58137      18.2810      38.4800          150          0.25901  
+  50      49.836    0.75128      1.49836      18.2810      36.4601          150          0.25901  
+  55      42.964    0.74242      1.42964      18.0655      34.7879          150          0.25624  
+  60      37.671    0.79452      1.37671      19.3333      33.5000          150          0.22171  
+  65      32.561    0.71233      1.32561      17.3333      32.2564          150          0.18180  
+  70      29.550    0.90411      1.29550      22.0000      31.5238          150          0.15035  
+  75      24.201    0.49315      1.24201      12.0000      30.2222          150          0.12597  
+  80      18.664    0.35616      1.18664       8.6667      28.8750          150          0.09864  
+  85      13.457    0.30137      1.13457       7.3333      27.6078          150          0.07456  
+  90       8.828    0.30137      1.08828       7.3333      26.4815          150          0.05336  
+  95       4.398    0.24658      1.04398       6.0000      25.4035          150          0.03284  
+ 100       0.000    0.16438      1.00000       4.0000      24.3333          150          0.01278  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Assessment Score Distribution
+
+Data Role=TRAIN Target Variable=ORGYN Target Label=' '
+
+ Posterior     Number                     Mean
+Probability      of      Number of     Posterior
+   Range       Events    Nonevents    Probability    Percentage
+
+ 0.95-1.00         5          0         0.96282         0.125  
+ 0.90-0.95        11          2         0.92232         0.325  
+ 0.85-0.90        28          4         0.87071         0.800  
+ 0.80-0.85        39          3         0.82306         1.050  
+ 0.75-0.80        47          9         0.77252         1.400  
+ 0.70-0.75        37         10         0.72541         1.175  
+ 0.65-0.70        45         14         0.67432         1.475  
+ 0.60-0.65        50         27         0.62737         1.925  
+ 0.55-0.60        49         30         0.57497         1.975  
+ 0.50-0.55        60         52         0.52221         2.800  
+ 0.45-0.50        52         59         0.47476         2.775  
+ 0.40-0.45        56         88         0.42769         3.600  
+ 0.35-0.40        49         99         0.37549         3.700  
+ 0.30-0.35        36        121         0.32465         3.925  
+ 0.25-0.30       204        843         0.26188        26.175  
+ 0.20-0.25        54        185         0.22442         5.975  
+ 0.15-0.20        41        247         0.17269         7.200  
+ 0.10-0.15        48        293         0.12454         8.525  
+ 0.05-0.10        38        458         0.07452        12.400  
+ 0.00-0.05        25        482         0.02659        12.675  
+
+
+Data Role=VALIDATE Target Variable=ORGYN Target Label=' '
+
+ Posterior     Number                     Mean
+Probability      of      Number of     Posterior
+   Range       Events    Nonevents    Probability    Percentage
+
+ 0.90-0.95        11          0         0.92365         0.3667 
+ 0.85-0.90        18          0         0.87242         0.6000 
+ 0.80-0.85        30          3         0.81816         1.1000 
+ 0.75-0.80        30          4         0.77412         1.1333 
+ 0.70-0.75        31          7         0.72404         1.2667 
+ 0.65-0.70        23         14         0.67246         1.2333 
+ 0.60-0.65        30         13         0.62578         1.4333 
+ 0.55-0.60        35         25         0.57232         2.0000 
+ 0.50-0.55        38         24         0.52501         2.0667 
+ 0.45-0.50        37         44         0.47325         2.7000 
+ 0.40-0.45        43         46         0.42343         2.9667 
+ 0.35-0.40        30         78         0.37767         3.6000 
+ 0.30-0.35        47         92         0.32600         4.6333 
+ 0.25-0.30       167        713         0.26141        29.3333 
+ 0.20-0.25        32        131         0.22476         5.4333 
+ 0.15-0.20        40        192         0.17368         7.7333 
+ 0.10-0.15        42        244         0.12588         9.5333 
+ 0.05-0.10        28        306         0.07414        11.1333 
+ 0.00-0.05        18        334         0.02638        11.7333 

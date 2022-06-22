@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><StatGraph silkCompat="true" version="9.2_S2DVR">
+<ConstChart actionMode="brush" animate="true" dstype="assoc" fontFamily="SansSerif" fontSize="10" layout="auto" layoutType="3" lcolor="WEIGHT" ldirected="false" lfrom="from" lid="_LABEL_" linkData="WEIGHTDS" linkWidth="1" lsupport="20.0" lto="to" name="Constellation" nodeShape="Circle" showThresholdScrollbar="false">
+<Background fillColor="F0F0F0"/>
+</ConstChart>
+</StatGraph>

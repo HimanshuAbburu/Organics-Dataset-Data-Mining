@@ -1,0 +1,264 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+          Measurement    Frequency
+ Role        Level         Count
+
+TARGET      BINARY           1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+                                                                                     BINNED_KS_
+                                                            _KS_PROB_                   PROB_
+Obs    TARGET    TARGETLABEL    _AUR_    _GINI_      KS       CUTOFF     _KS_BIN_      CUTOFF
+
+ 1     ORGYN                    0.811     0.621    0.464      0.257        0.456        0.293  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+                                                               _VKS_              _VBINNED_
+                                                               PROB_     _VKS_     KS_PROB_
+Obs    TARGET    TARGETLABEL    _VAUR_    _VGINI_     VKS     CUTOFF_     BIN_     CUTOFF_
+
+ 1     ORGYN                     0.787     0.573     0.443     0.252     0.441      0.331  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+                                                               _TKS_              _TBINNED_
+                                                               PROB_     _TKS_     KS_PROB_
+Obs    TARGET    TARGETLABEL    _TAUR_    _TGINI_     TKS     CUTOFF_     BIN_     CUTOFF_
+
+ 1     ORGYN                     0.788     0.575     0.429     0.281     0.427      0.298  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+                                                                                     BINNED_KS_
+                                                            _KS_PROB_                   PROB_
+Obs    TARGET    TARGETLABEL    _AUR_    _GINI_      KS       CUTOFF     _KS_BIN_      CUTOFF
+
+ 1     ORGYN                    0.821     0.642    0.485      0.212        0.484        0.267  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+                                                               _VKS_              _VBINNED_
+                                                               PROB_     _VKS_     KS_PROB_
+Obs    TARGET    TARGETLABEL    _VAUR_    _VGINI_     VKS     CUTOFF_     BIN_     CUTOFF_
+
+ 1     ORGYN                     0.806     0.613     0.463     0.251     0.461      0.346  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+                                                               _TKS_              _TBINNED_
+                                                               PROB_     _TKS_     KS_PROB_
+Obs    TARGET    TARGETLABEL    _TAUR_    _TGINI_     TKS     CUTOFF_     BIN_     CUTOFF_
+
+ 1     ORGYN                     0.803     0.606     0.466     0.251     0.465       0.24  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+                                                                                     BINNED_KS_
+                                                            _KS_PROB_                   PROB_
+Obs    TARGET    TARGETLABEL    _AUR_    _GINI_      KS       CUTOFF     _KS_BIN_      CUTOFF
+
+ 1     ORGYN                    0.797     0.593    0.451      0.273        0.448        0.325  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+                                                               _VKS_              _VBINNED_
+                                                               PROB_     _VKS_     KS_PROB_
+Obs    TARGET    TARGETLABEL    _VAUR_    _VGINI_     VKS     CUTOFF_     BIN_     CUTOFF_
+
+ 1     ORGYN                     0.787     0.574     0.449     0.341     0.448      0.361  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+                                                               _TKS_              _TBINNED_
+                                                               PROB_     _TKS_     KS_PROB_
+Obs    TARGET    TARGETLABEL    _TAUR_    _TGINI_     TKS     CUTOFF_     BIN_     CUTOFF_
+
+ 1     ORGYN                     0.793     0.586     0.443     0.293      0.44      0.324  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+
+
+
+
+
+
+Fit Statistics
+Model Selection based on Valid: Misclassification Rate (_VMISC_)
+
+                                                                        Train:                          Valid:
+                                                        Valid:         Average          Train:         Average
+Selected    Model                                 Misclassification    Squared    Misclassification    Squared
+ Model      Node          Model Description              Rate           Error            Rate           Error
+
+   Y        Tree       Decision Tree Default           0.17800         0.13447         0.18900         0.13440
+            Reg9       Imputed Step Regression         0.19033         0.13888         0.19500         0.13939
+            Neural3    Imputed Neural Network          0.19200         0.13469         0.18325         0.13863
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+
+
+
+
+
+
+Fit Statistics Table
+Target: ORGYN
+
+Data Role=Train
+
+Statistics                                                           Tree       Reg9    Neural3
+
+Train: Bin-Based Two-Way Kolmogorov-Smirnov Probability Cutoff       0.27       0.33       0.29
+Train: Kolmogorov-Smirnov Statistic                                  0.49       0.45       0.46
+Train: Akaike's Information Criterion                                 .      3525.07    3658.77
+Train: Average Squared Error                                         0.13       0.14       0.13
+Train: Roc Index                                                     0.82       0.80       0.81
+Train: Average Error Function                                         .         0.44       0.42
+Train: Cumulative Percent Captured Response                         30.21      30.39      31.72
+Train: Percent Captured Response                                    14.85      12.63      14.17
+Selection Criterion: Valid: Misclassification Rate                   0.18       0.19       0.19
+Train: Degrees of Freedom for Error                                   .      3987.00    3867.00
+Train: Model Degrees of Freedom                                       .        13.00     133.00
+Train: Total Degrees of Freedom                                   4000.00    4000.00    4000.00
+Train: Divisor for ASE                                            8000.00    8000.00    8000.00
+Train: Error Function                                                 .      3499.07    3392.77
+Train: Final Prediction Error                                         .         0.14       0.14
+Train: Gain                                                        202.13     203.90     217.25
+Train: Gini Coefficient                                              0.64       0.59       0.62
+Train: Bin-Based Two-Way Kolmogorov-Smirnov Statistic                0.48       0.45       0.46
+Train: Kolmogorov-Smirnov Probability Cutoff                         0.21       0.27       0.26
+Train: Cumulative Lift                                               3.02       3.04       3.17
+Train: Lift                                                          2.97       2.53       2.83
+Train: Maximum Absolute Error                                        0.98       0.99       0.99
+Train: Misclassification Rate                                        0.19       0.20       0.18
+Train: Mean Squared Error                                             .         0.14       0.14
+Train: Sum of Frequencies                                         4000.00    4000.00    4000.00
+Train: Number of Estimated Weights                                    .        13.00     133.00
+Train: Root Average Squared Error                                    0.37       0.37       0.37
+Train: Cumulative Percent Response                                  73.57      74.00      77.25
+Train: Percent Response                                             72.30      61.50      69.00
+Train: Root Final Prediction Error                                    .         0.37       0.38
+Train: Root Mean Squared Error                                        .         0.37       0.37
+Train: Schwarz's Bayesian Criterion                                   .      3606.89    4495.88
+Train: Sum of Squared Errors                                      1075.77    1111.07    1077.52
+Train: Sum of Case Weights Times Freq                                 .      8000.00    8000.00
+Train: Number of Wrong Classifications                                .          .       733.00
+
+
+Data Role=Valid
+
+Statistics                                                           Tree       Reg9    Neural3
+
+Valid: Kolmogorov-Smirnov Statistic                                  0.46       0.45       0.44
+Valid: Average Squared Error                                         0.13       0.14       0.14
+Valid: Roc Index                                                     0.81       0.79       0.79
+Valid: Average Error Function                                         .         0.44       0.44
+Valid: Bin-Based Two-Way Kolmogorov-Smirnov Probability Cutoff       0.35       0.36       0.33
+Valid: Cumulative Percent Captured Response                         31.12      30.96      31.10
+Valid: Percent Captured Response                                    15.04      12.74      12.74
+Valid: Divisor for VASE                                           6000.00    6000.00    6000.00
+Valid: Error Function                                                 .      2650.96    2650.57
+Valid: Gain                                                        211.24     209.59     210.96
+Valid: Gini Coefficient                                              0.61       0.57       0.57
+Valid: Bin-Based Two-Way Kolmogorov-Smirnov Statistic                0.46       0.45       0.44
+Valid: Kolmogorov-Smirnov Probability Cutoff                         0.25       0.34       0.25
+Valid: Cumulative Lift                                               3.11       3.10       3.11
+Valid: Lift                                                          3.01       2.55       2.55
+Valid: Maximum Absolute Error                                        0.98       0.99       0.99
+Valid: Misclassification Rate                                        0.18       0.19       0.19
+Valid: Mean Squared Error                                             .         0.14       0.14
+Valid: Sum of Frequencies                                         3000.00    3000.00    3000.00
+Valid: Root Average Squared Error                                    0.37       0.37       0.37
+Valid: Cumulative Percent Response                                  75.74      75.33      75.67
+Valid: Percent Response                                             73.21      62.00      62.00
+Valid: Root Mean Squared Error                                        .         0.37       0.37
+Valid: Sum of Squared Errors                                       806.43     836.36     831.75
+Valid: Sum of Case Weights Times Freq                                 .      6000.00    6000.00
+Valid: Number of Wrong Classifications                                .          .       576.00
+
+
+Data Role=Test
+
+Statistics                                                           Tree       Reg9    Neural3
+
+Test:  Kolmogorov-Smirnov Statistic                                  0.47       0.44       0.43
+Test: Average Squared Error                                          0.14       0.14       0.14
+Test:  Roc Index                                                     0.80       0.79       0.79
+Test: Average Error Function                                          .         0.44       0.45
+Test:  Bin-Based Two-Way Kolmogorov-Smirnov Probability Cutoff       0.24       0.32       0.30
+Test: Cumulative Percent Captured Response                          29.43      30.00      30.41
+Test: Percent Captured Response                                     14.72      12.74      13.70
+Test: Divisor for TASE                                            6000.00    6000.00    6000.00
+Test: Error Function                                                  .      2639.37    2672.91
+Test: Gain                                                         194.30     200.00     204.11
+Test:  Gini Coefficient                                              0.61       0.59       0.58
+Test:  Bin-Based Two-Way Kolmogorov-Smirnov Statistic                0.47       0.44       0.43
+Test:  Kolmogorov-Smirnov Probability Cutoff                         0.25       0.29       0.28
+Test: Cumulative Lift                                                2.94       3.00       3.04
+Test: Lift                                                           2.94       2.55       2.74
+Test: Maximum Absolute Error                                         0.98       0.98       0.99
+Test: Misclassification Rate                                         0.20       0.20       0.19
+Test: Lower 95% Conf. Limit for TMISC                                 .         0.18        .  
+Test: Upper 95% Conf. Limit for TMISC                                 .         0.21        .  
+Test: Mean Squared Error                                              .         0.14       0.14
+Test: Sum of Frequencies                                          3000.00    3000.00    3000.00
+Test: Root Average Squared Error                                     0.37       0.37       0.38
+Test: Cumulative Percent Response                                   71.61      73.00      74.00
+Test: Percent Response                                              71.63      62.00      66.67
+Test: Root Mean Squared Error                                         .         0.37       0.38
+Test: Sum of Squared Errors                                        840.35     840.34     847.76
+Test: Sum of Case Weights Times Freq                              6000.00    6000.00    6000.00
+Test: Number of Wrong Classifications                                 .          .       573.00
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+
+
+
+
+
+
+Event Classification Table
+Model Selection based on Valid: Misclassification Rate (_VMISC_)
+
+Model                                 Data                  Target      False       True        False       True
+Node          Model Description       Role        Target    Label     Negative    Negative    Positive    Positive
+
+Neural3    Imputed Neural Network     TRAIN       ORGYN                  595        2888         138         379  
+Neural3    Imputed Neural Network     VALIDATE    ORGYN                  483        2177          93         247  
+Tree       Decision Tree Default      TRAIN       ORGYN                  505        2775         251         469  
+Tree       Decision Tree Default      VALIDATE    ORGYN                  386        2122         148         344  
+Reg9       Imputed Step Regression    TRAIN       ORGYN                  616        2862         164         358  
+Reg9       Imputed Step Regression    VALIDATE    ORGYN                  478        2177          93         252  

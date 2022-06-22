@@ -1,0 +1,18 @@
+if NAME="CUSTID" then do;
+ROLE="REJECTED";
+LEVEL="INTERVAL";
+ORDER="";
+DROP="N";
+end;
+if NAME="LCDATE" then do;
+ROLE="REJECTED";
+LEVEL="INTERVAL";
+ORDER="";
+DROP="N";
+end;
+if NAME="ORGYN" then do;
+ROLE="TARGET";
+LEVEL="BINARY";
+ORDER="";
+DROP="N";
+end;

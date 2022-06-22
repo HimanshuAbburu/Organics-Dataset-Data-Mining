@@ -1,0 +1,502 @@
+*------------------------------------------------------------*
+User:                P2503016
+Date:                30 November 2021
+Time:                13:03:07
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+INPUT        INTERVAL          8
+INPUT        NOMINAL           6
+REJECTED     INTERVAL          2
+TARGET       BINARY            1
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+Filter Limits for Interval Variables
+(maximum 500 observations printed)
+ 
+                                                                 Keep
+                                                      Filter    Missing
+Variable    Role            Minimum        Maximum    Method    Values     Label
+ 
+ AFFL       INPUT             -1.59          19.04    STDDEV       N
+ AGE        INPUT             14.23          93.32    STDDEV       Y
+ BILL       INPUT         -16055.13       24791.88    STDDEV       Y
+ CUSTID     REJECTED    -8450124.66    31215812.91    STDDEV       Y
+ LCDATE     REJECTED        4825.31       18471.28    STDDEV       Y
+ LTIME      INPUT             -7.46          20.62    STDDEV       Y
+ S_CONV     INPUT              0.47          21.08    STDDEV       Y
+ S_FVEG     INPUT             -0.57          59.90    STDDEV       Y
+ S_MT       INPUT              0.08          49.89    STDDEV       Y
+ S_TOIL     INPUT             -5.92          44.68    STDDEV       Y
+ 
+ 
+ 
+Excluded Class Values
+(maximum 500 observations printed)
+ 
+                                     Train     Train              Filter
+Variable    Role     Level           Count    Percent    Label    Method
+ 
+ GENDER     INPUT    _BLANK_           401     10.025
+ NGROUP     INPUT    U                  10      0.250             MINPCT
+ NGROUP     INPUT    _BLANK_           126      3.150
+ OAC        INPUT    .                  67      1.675
+ REGION     INPUT    _BLANK_            88      2.200
+ TV_REG     INPUT    BORDER             33      0.825             MINPCT
+ TV_REG     INPUT    _BLANK_            88      2.200
+ 
+ 
+ 
+ 
+Number Of Observations
+ 
+Data
+Role        Filtered    Excluded    DATA
+ 
+TRAIN         2964        1036      4000
+VALIDATE      2179         821      3000
+TEST          2238         762      3000
+ 
+ 
+ 
+Statistics for Original and FILTERED Data
+(maximum 500 observations printed)
+ 
+Data Role=TEST Variable=AFFL
+ 
+Statistics            Original    Filtered
+ 
+Non Missing            2873.00     2179.00
+Missing                 127.00        0.00
+Minimum                   1.00        1.00
+Maximum                  29.00       19.00
+Mean                      8.79        8.64
+Standard Deviation        3.42        3.22
+Skewness                  0.85        0.41
+Kurtosis                  1.78        0.12
+ 
+ 
+Data Role=TEST Variable=AGE
+ 
+Statistics            Original    Filtered
+ 
+Non Missing            2810.00     2014.00
+Missing                 190.00      165.00
+Minimum                  21.00       18.00
+Maximum                  79.00       79.00
+Mean                     53.64       53.33
+Standard Deviation       13.05       13.29
+Skewness                 -0.06       -0.04
+Kurtosis                 -0.85       -0.88
+ 
+ 
+Data Role=TEST Variable=BILL
+ 
+Statistics             Original    Filtered
+ 
+Non Missing             3000.00     2179.00
+Missing                    0.00        0.00
+Minimum                    0.00        0.00
+Maximum               296314.00    24300.00
+Mean                    4434.91     3702.82
+Standard Deviation      9679.68     4922.98
+Skewness                  15.33        1.78
+Kurtosis                 397.16        3.06
+ 
+ 
+Data Role=TEST Variable=CUSTID
+ 
+Statistics                Original        Filtered
+ 
+Non Missing                3000.00         2179.00
+Missing                       0.00            0.00
+Minimum                     140.00         2313.00
+Maximum                26076748.00     26087227.00
+Mean                   11238139.84     11604842.77
+Standard Deviation      6566047.65      6571703.30
+Skewness                      0.34            0.32
+Kurtosis                     -0.78           -0.72
+ 
+ 
+Data Role=TEST Variable=LCDATE
+ 
+Statistics             Original     Filtered
+ 
+Non Missing             2954.00      2157.00
+Missing                   46.00        22.00
+Minimum               -21914.00      6634.00
+Maximum                13846.00     13844.00
+Mean                   11720.29     11913.68
+Standard Deviation      2144.42      1220.12
+Skewness                  -7.55        -1.02
+Kurtosis                 103.57         1.80
+ 
+ 
+Data Role=TEST Variable=LTIME
+ 
+Statistics            Original    Filtered
+ 
+Non Missing            2954.00     2157.00
+Missing                  46.00       22.00
+Minimum                   0.00        1.00
+Maximum                  36.00       20.00
+Mean                      6.42        6.05
+Standard Deviation        4.51        3.37
+Skewness                  2.32        0.95
+Kurtosis                  8.54        1.64
+ 
+ 
+Data Role=TEST Variable=S_CONV
+ 
+Statistics            Original    Filtered
+ 
+Non Missing            3000.00     2179.00
+Missing                   0.00        0.00
+Minimum                   0.06        0.73
+Maximum                  33.68       20.63
+Mean                     10.73       10.39
+Standard Deviation        3.43        3.31
+Skewness                  0.30       -0.21
+Kurtosis                  2.13       -0.26
+ 
+ 
+Data Role=TEST Variable=S_FVEG
+ 
+Statistics            Original    Filtered
+ 
+Non Missing            3000.00     2179.00
+Missing                   0.00        0.00
+Minimum                   0.05        0.17
+Maximum                  64.26       59.86
+Mean                     29.69       29.99
+Standard Deviation        9.98        9.98
+Skewness                 -0.24       -0.25
+Kurtosis                  0.62        0.53
+ 
+ 
+Data Role=TEST Variable=S_MT
+ 
+Statistics            Original    Filtered
+ 
+Non Missing            3000.00     2179.00
+Missing                   0.00        0.00
+Minimum                   0.14        0.10
+Maximum                  52.89       49.40
+Mean                     25.07       25.02
+Standard Deviation        8.23        8.18
+Skewness                 -0.11       -0.08
+Kurtosis                  0.28        0.08
+ 
+ 
+Data Role=TEST Variable=S_TOIL
+ 
+Statistics            Original    Filtered
+ 
+Non Missing            3000.00     2179.00
+Missing                   0.00        0.00
+Minimum                   0.08        0.09
+Maximum                  49.19       44.40
+Mean                     19.01       19.93
+Standard Deviation        8.10        8.10
+Skewness                  0.23        0.10
+Kurtosis                  0.10       -0.16
+ 
+ 
+Data Role=TRAIN Variable=AFFL
+ 
+Statistics            Original    Filtered
+ 
+Non Missing            3790.00     2964.00
+Missing                 210.00        0.00
+Minimum                   1.00        1.00
+Maximum                  31.00       19.00
+Mean                      8.73        8.67
+Standard Deviation        3.44        3.19
+Skewness                  0.98        0.44
+Kurtosis                  2.35       -0.03
+ 
+ 
+Data Role=TRAIN Variable=AGE
+ 
+Statistics            Original    Filtered
+ 
+Non Missing            3770.00     2805.00
+Missing                 230.00      159.00
+Minimum                  18.00       18.00
+Maximum                  79.00       79.00
+Mean                     53.77       53.31
+Standard Deviation       13.18       13.15
+Skewness                 -0.06       -0.02
+Kurtosis                 -0.84       -0.86
+ 
+ 
+Data Role=TRAIN Variable=BILL
+ 
+Statistics             Original    Filtered
+ 
+Non Missing             4000.00     2964.00
+Missing                    0.00        0.00
+Minimum                    0.00        0.00
+Maximum               100000.00    24053.00
+Mean                    4368.37     3740.32
+Standard Deviation      6807.84     4893.77
+Skewness                   3.84        1.72
+Kurtosis                  25.90        2.83
+ 
+ 
+Data Role=TRAIN Variable=CUSTID
+ 
+Statistics                Original        Filtered
+ 
+Non Missing                4000.00         2964.00
+Missing                       0.00            0.00
+Minimum                    1120.00         1120.00
+Maximum                26078368.00     26078368.00
+Mean                   11382844.13     11413248.81
+Standard Deviation      6610989.59      6654334.44
+Skewness                      0.36            0.36
+Kurtosis                     -0.72           -0.73
+ 
+ 
+Data Role=TRAIN Variable=LCDATE
+ 
+Statistics             Original     Filtered
+ 
+Non Missing             3958.00      2932.00
+Missing                   42.00        32.00
+Minimum               -21914.00      6634.00
+Maximum                13846.00     13844.00
+Mean                   11648.29     11890.56
+Standard Deviation      2274.33      1265.44
+Skewness                  -7.38        -0.98
+Kurtosis                  96.19         1.44
+ 
+ 
+Data Role=TRAIN Variable=LTIME
+ 
+Statistics            Original    Filtered
+ 
+Non Missing            3958.00     2932.00
+Missing                  42.00       32.00
+Minimum                   0.00        1.00
+Maximum                  36.00       20.00
+Mean                      6.58        6.11
+Standard Deviation        4.68        3.49
+Skewness                  2.17        0.92
+Kurtosis                  7.30        1.33
+ 
+ 
+Data Role=TRAIN Variable=S_CONV
+ 
+Statistics            Original    Filtered
+ 
+Non Missing            4000.00     2964.00
+Missing                   0.00        0.00
+Minimum                   0.03        0.52
+Maximum                  35.00       20.97
+Mean                     10.78       10.61
+Standard Deviation        3.44        3.31
+Skewness                  0.17       -0.23
+Kurtosis                  1.81       -0.08
+ 
+ 
+Data Role=TRAIN Variable=S_FVEG
+ 
+Statistics            Original    Filtered
+ 
+Non Missing            4000.00     2964.00
+Missing                   0.00        0.00
+Minimum                   0.02        0.02
+Maximum                  68.22       59.81
+Mean                     29.67       29.80
+Standard Deviation       10.08       10.03
+Skewness                 -0.25       -0.32
+Kurtosis                  0.72        0.64
+ 
+ 
+Data Role=TRAIN Variable=S_MT
+ 
+Statistics            Original    Filtered
+ 
+Non Missing            4000.00     2964.00
+Missing                   0.00        0.00
+Minimum                   0.08        0.09
+Maximum                  55.48       49.68
+Mean                     24.99       25.23
+Standard Deviation        8.30        8.22
+Skewness                 -0.04       -0.13
+Kurtosis                  0.14        0.07
+ 
+ 
+Data Role=TRAIN Variable=S_TOIL
+ 
+Statistics            Original    Filtered
+ 
+Non Missing            4000.00     2964.00
+Missing                   0.00        0.00
+Minimum                   0.01        0.04
+Maximum                  54.73       44.56
+Mean                     19.38       19.80
+Standard Deviation        8.43        8.35
+Skewness                  0.23        0.15
+Kurtosis                  0.06       -0.14
+ 
+ 
+Data Role=VALIDATE Variable=AFFL
+ 
+Statistics            Original    Filtered
+ 
+Non Missing            2867.00     2179.00
+Missing                 133.00        0.00
+Minimum                   1.00        1.00
+Maximum                  27.00       19.00
+Mean                      8.66        8.64
+Standard Deviation        3.41        3.22
+Skewness                  0.78        0.41
+Kurtosis                  1.48        0.12
+ 
+ 
+Data Role=VALIDATE Variable=AGE
+ 
+Statistics            Original    Filtered
+ 
+Non Missing            2772.00     2014.00
+Missing                 228.00      165.00
+Minimum                  18.00       18.00
+Maximum                  79.00       79.00
+Mean                     53.81       53.33
+Standard Deviation       13.20       13.29
+Skewness                 -0.08       -0.04
+Kurtosis                 -0.85       -0.88
+ 
+ 
+Data Role=VALIDATE Variable=BILL
+ 
+Statistics             Original    Filtered
+ 
+Non Missing             3000.00     2179.00
+Missing                    0.00        0.00
+Minimum                    0.00        0.00
+Maximum               120000.00    24300.00
+Mean                    4206.18     3702.82
+Standard Deviation      6657.80     4922.98
+Skewness                   4.92        1.78
+Kurtosis                  52.28        3.06
+ 
+ 
+Data Role=VALIDATE Variable=CUSTID
+ 
+Statistics                Original        Filtered
+ 
+Non Missing                3000.00         2179.00
+Missing                       0.00            0.00
+Minimum                    2313.00         2313.00
+Maximum                26087227.00     26087227.00
+Mean                   11497350.53     11604842.77
+Standard Deviation      6571968.77      6571703.30
+Skewness                      0.34            0.32
+Kurtosis                     -0.72           -0.72
+ 
+ 
+Data Role=VALIDATE Variable=LCDATE
+ 
+Statistics             Original     Filtered
+ 
+Non Missing             2965.00      2157.00
+Missing                   35.00        22.00
+Minimum               -21914.00      6634.00
+Maximum                13844.00     13844.00
+Mean                   11606.35     11913.68
+Standard Deviation      2547.06      1220.12
+Skewness                  -7.67        -1.02
+Kurtosis                  90.75         1.80
+ 
+ 
+Data Role=VALIDATE Variable=LTIME
+ 
+Statistics            Original    Filtered
+ 
+Non Missing            2965.00     2157.00
+Missing                  35.00       22.00
+Minimum                   0.00        1.00
+Maximum                  35.00       20.00
+Mean                      6.59        6.05
+Standard Deviation        4.84        3.37
+Skewness                  2.42        0.95
+Kurtosis                  8.45        1.64
+ 
+ 
+Data Role=VALIDATE Variable=S_CONV
+ 
+Statistics            Original    Filtered
+ 
+Non Missing            3000.00     2179.00
+Missing                   0.00        0.00
+Minimum                   0.44        0.73
+Maximum                  31.51       20.63
+Mean                     10.69       10.39
+Standard Deviation        3.48        3.31
+Skewness                  0.29       -0.21
+Kurtosis                  1.85       -0.26
+ 
+ 
+Data Role=VALIDATE Variable=S_FVEG
+ 
+Statistics            Original    Filtered
+ 
+Non Missing            3000.00     2179.00
+Missing                   0.00        0.00
+Minimum                   0.05        0.17
+Maximum                  64.76       59.86
+Mean                     29.85       29.99
+Standard Deviation        9.84        9.98
+Skewness                 -0.22       -0.25
+Kurtosis                  0.79        0.53
+ 
+ 
+Data Role=VALIDATE Variable=S_MT
+ 
+Statistics            Original    Filtered
+ 
+Non Missing            3000.00     2179.00
+Missing                   0.00        0.00
+Minimum                   0.10        0.10
+Maximum                  55.71       49.40
+Mean                     24.95       25.02
+Standard Deviation        8.13        8.18
+Skewness                 -0.01       -0.08
+Kurtosis                  0.27        0.08
+ 
+ 
+Data Role=VALIDATE Variable=S_TOIL
+ 
+Statistics            Original    Filtered
+ 
+Non Missing            3000.00     2179.00
+Missing                   0.00        0.00
+Minimum                   0.09        0.09
+Maximum                  53.29       44.40
+Mean                     19.21       19.93
+Standard Deviation        8.37        8.10
+Skewness                  0.27        0.10
+Kurtosis                  0.16       -0.16
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*

@@ -1,0 +1,35 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+Imputation Summary
+Number Of Observations
+
+                                                                                      Number of
+Variable    Impute     Imputed                               Measurement                Missing
+  Name      Method     Variable     Impute Value    Role        Level       Label     for TRAIN
+
+ AFFL       MEAN      IMP_AFFL      8.7269129288    INPUT     INTERVAL                      210
+ AGE        MEAN      IMP_AGE       53.771883289    INPUT     INTERVAL                      230
+ GENDER     COUNT     IMP_GENDER    F               INPUT     NOMINAL                       401
+ LTIME      MEAN      IMP_LTIME     6.5795856493    INPUT     INTERVAL                       42
+ NGROUP     COUNT     IMP_NGROUP    C               INPUT     NOMINAL                       126
+ OAC        COUNT     IMP_OAC                  2    INPUT     NOMINAL                        67
+ REGION     COUNT     IMP_REGION    South East      INPUT     NOMINAL                        88
+ TV_REG     COUNT     IMP_TV_REG    London          INPUT     NOMINAL                        88
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Distribution Training Data
+
+        Number of
+          Missing    Number of    Percent of
+Obs     for TRAIN    Variables     Variables
+
+ 1            401        1           12.5   
+ 2            230        1           12.5   
+ 3            210        1           12.5   
+ 4            126        1           12.5   
+ 5             88        2           25.0   
+ 6             67        1           12.5   
+ 7             42        1           12.5   

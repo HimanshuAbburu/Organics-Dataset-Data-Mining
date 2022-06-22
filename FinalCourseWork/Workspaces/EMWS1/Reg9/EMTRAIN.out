@@ -1,0 +1,736 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+            Measurement    Frequency
+Role           Level         Count
+
+INPUT        INTERVAL          8    
+INPUT        NOMINAL           6    
+REJECTED     INTERVAL          2    
+TARGET       BINARY            1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Model Events
+
+                                  Number
+                   Measurement      of
+Target    Event       Level       Levels      Order       Label
+
+ORGYN       1        BINARY          2      Descending         
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Predicted and decision variables
+
+Type         Variable    Label
+
+TARGET       ORGYN                         
+PREDICTED    P_ORGYN1    Predicted: ORGYN=1
+RESIDUAL     R_ORGYN1    Residual: ORGYN=1 
+PREDICTED    P_ORGYN0    Predicted: ORGYN=0
+RESIDUAL     R_ORGYN0    Residual: ORGYN=0 
+FROM         F_ORGYN     From: ORGYN       
+INTO         I_ORGYN     Into: ORGYN       
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+                Model Information
+
+Training Data Set              WORK.EM_DMREG.VIEW
+DMDB Catalog                   WORK.REG9_DMDB    
+Target Variable                ORGYN             
+Target Measurement Level       Ordinal           
+Number of Target Categories    2                 
+Error                          MBernoulli        
+Link Function                  Logit             
+Number of Model Parameters     43                
+Number of Observations         4000              
+
+
+         Target Profile
+ 
+ Ordered                   Total
+   Value     ORGYN     Frequency
+
+       1     1               974
+       2     0              3026
+
+
+
+
+Stepwise Selection Procedure
+
+
+Step 0: Intercept entered.
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+Newton-Raphson Ridge Optimization
+
+Without Parameter Scaling
+
+Parameter Estimates               1
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                       2220.3233484
+Max Abs Gradient Element                 7.833734E-13                                                       
+
+                                            Optimization Results
+
+Iterations                                          0  Function Calls                                      3
+Hessian Calls                                       1  Active Constraints                                  0
+Objective Function                       2220.3233484  Max Abs Gradient Element                 7.833734E-13
+Ridge                                               0  Actual Over Pred Change                             0
+
+Convergence criterion (ABSGCONV=0.00001) satisfied.                                               
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+   4440.647        4440.647         0.0000        0          .    
+
+
+
+
+                                  Analysis of Maximum Likelihood Estimates
+ 
+                                             Standard          Wald                  Standardized
+Parameter                  DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+
+Intercept                   1     -1.1336      0.0368        946.84        <.0001                       0.322
+
+
+
+
+Step 1: Effect IMP_AFFL entered.
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+Newton-Raphson Ridge Optimization
+
+Without Parameter Scaling
+
+Parameter Estimates               2
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                       2220.3233484
+Max Abs Gradient Element                  138.4703606                                                       
+
+
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+
+   1            0           2              0             1968        252.5     91.9004         0        0.966
+   2            0           3              0             1961       6.9245      3.6169         0        1.030
+   3            0           4              0             1961       0.0177      0.0112         0        1.002
+   4            0           5              0             1961      2.42E-7    1.435E-7         0        1.000
+
+                                            Optimization Results
+
+Iterations                                          4  Function Calls                                      7
+Hessian Calls                                       5  Active Constraints                                  0
+Objective Function                       1960.8723839  Max Abs Gradient Element                 1.4352035E-7
+Ridge                                               0  Actual Over Pred Change                  1.0003088141
+
+Convergence criterion (GCONV=1E-6) satisfied.                                                     
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+   4440.647        3921.745       518.9019        1         <.0001
+
+
+          Type 3 Analysis of Effects
+ 
+                            Wald
+Effect          DF    Chi-Square    Pr > ChiSq
+
+IMP_AFFL         1      415.9212        <.0001
+
+
+                                  Analysis of Maximum Likelihood Estimates
+ 
+                                             Standard          Wald                  Standardized
+Parameter                  DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+
+Intercept                   1     -3.6108      0.1325        743.04        <.0001                       0.027
+IMP_AFFL                    1      0.2664      0.0131        415.92        <.0001          0.4917       1.305
+
+
+               Odds Ratio Estimates
+                         
+                                              Point
+Effect                                     Estimate
+
+IMP_AFFL                                      1.305
+
+
+Step 2: Effect IMP_AGE entered.
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+Newton-Raphson Ridge Optimization
+
+Without Parameter Scaling
+
+Parameter Estimates               3
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                       2220.3233484
+Max Abs Gradient Element                 208.56920468                                                       
+
+
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+
+   1            0           2              0             1848        372.0       128.2         0        0.992
+   2            0           3              0             1830      18.2526     10.1198         0        1.065
+   3            0           4              0             1830       0.2195      0.1389         0        1.011
+   4            0           5              0             1830     0.000056    0.000034         0        1.000
+
+                                            Optimization Results
+
+Iterations                                          4  Function Calls                                      7
+Hessian Calls                                       5  Active Constraints                                  0
+Objective Function                       1829.8033754  Max Abs Gradient Element                 0.0000343258
+Ridge                                               0  Actual Over Pred Change                  1.0001771071
+
+Convergence criterion (GCONV=1E-6) satisfied.                                                     
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+   4440.647        3659.607       781.0399        2         <.0001
+
+
+          Type 3 Analysis of Effects
+ 
+                            Wald
+Effect          DF    Chi-Square    Pr > ChiSq
+
+IMP_AFFL         1      352.7206        <.0001
+IMP_AGE          1      237.3414        <.0001
+
+
+                                  Analysis of Maximum Likelihood Estimates
+ 
+                                             Standard          Wald                  Standardized
+Parameter                  DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+
+Intercept                   1     -0.8062      0.2147         14.10        0.0002                       0.447
+IMP_AFFL                    1      0.2576      0.0137        352.72        <.0001          0.4754       1.294
+IMP_AGE                     1     -0.0527     0.00342        237.34        <.0001         -0.3717       0.949
+
+
+               Odds Ratio Estimates
+                         
+                                              Point
+Effect                                     Estimate
+
+IMP_AFFL                                      1.294
+IMP_AGE                                       0.949
+
+
+Step 3: Effect IMP_GENDER entered.
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+Newton-Raphson Ridge Optimization
+
+Without Parameter Scaling
+
+Parameter Estimates               5
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                       2220.3233484
+Max Abs Gradient Element                      212.872                                                       
+
+
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+
+   1            0           2              0             1794        426.6       145.0         0        1.006
+   2            0           3              0             1764      29.4467     15.8929         0        1.100
+   3            0           4              0             1763       1.0361      0.6670         0        1.042
+   4            0           5              0             1763      0.00550     0.00400         0        1.005
+   5            0           6              0             1763     3.926E-7    2.906E-7         0        1.000
+
+                                            Optimization Results
+
+Iterations                                          5  Function Calls                                      8
+Hessian Calls                                       6  Active Constraints                                  0
+Objective Function                       1763.2735782  Max Abs Gradient Element                 2.9056751E-7
+Ridge                                               0  Actual Over Pred Change                  1.0000339281
+
+Convergence criterion (GCONV=1E-6) satisfied.                                                     
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+   4440.647        3526.547       914.0995        4         <.0001
+
+
+          Type 3 Analysis of Effects
+ 
+                            Wald
+Effect          DF    Chi-Square    Pr > ChiSq
+
+IMP_AFFL         1      339.8584        <.0001
+IMP_AGE          1      220.8819        <.0001
+IMP_GENDER       2      109.7302        <.0001
+
+
+                                  Analysis of Maximum Likelihood Estimates
+ 
+                                             Standard          Wald                  Standardized
+Parameter                  DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+
+Intercept                   1     -1.4446      0.2323         38.68        <.0001                       0.236
+IMP_AFFL                    1      0.2576      0.0140        339.86        <.0001          0.4754       1.294
+IMP_AGE                     1     -0.0517     0.00348        220.88        <.0001         -0.3648       0.950
+IMP_GENDER F                1      0.8759      0.0896         95.51        <.0001                       2.401
+IMP_GENDER M                1      0.0317      0.1010          0.10        0.7533                       1.032
+
+
+               Odds Ratio Estimates
+                         
+                                              Point
+Effect                                     Estimate
+
+IMP_AFFL                                      1.294
+IMP_AGE                                       0.950
+IMP_GENDER F vs U                             5.951
+IMP_GENDER M vs U                             2.558
+
+
+Step 4: Effect S_MT entered.
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+Newton-Raphson Ridge Optimization
+
+Without Parameter Scaling
+
+Parameter Estimates               6
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                       2220.3233484
+Max Abs Gradient Element                      212.872                                                       
+
+
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+
+   1            0           2              0             1790        429.9       145.8         0        1.007
+   2            0           3              0             1760      30.1103     16.2164         0        1.102
+   3            0           4              0             1759       1.0878      0.6975         0        1.043
+   4            0           5              0             1759      0.00600     0.00434         0        1.006
+   5            0           6              0             1759     4.634E-7    3.416E-7         0        1.000
+
+                                            Optimization Results
+
+Iterations                                          5  Function Calls                                      8
+Hessian Calls                                       6  Active Constraints                                  0
+Objective Function                       1759.2569339  Max Abs Gradient Element                 3.4155135E-7
+Ridge                                               0  Actual Over Pred Change                   1.000055716
+
+Convergence criterion (GCONV=1E-6) satisfied.                                                     
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+   4440.647        3518.514       922.1328        5         <.0001
+
+
+          Type 3 Analysis of Effects
+ 
+                            Wald
+Effect          DF    Chi-Square    Pr > ChiSq
+
+IMP_AFFL         1      341.5915        <.0001
+IMP_AGE          1      222.1018        <.0001
+IMP_GENDER       2      103.8506        <.0001
+S_MT             1        8.0116        0.0046
+
+
+                                  Analysis of Maximum Likelihood Estimates
+ 
+                                             Standard          Wald                  Standardized
+Parameter                  DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+
+Intercept                   1     -1.8137      0.2677         45.90        <.0001                       0.163
+IMP_AFFL                    1      0.2592      0.0140        341.59        <.0001          0.4783       1.296
+IMP_AGE                     1     -0.0519     0.00349        222.10        <.0001         -0.3664       0.949
+IMP_GENDER F                1      0.8482      0.0903         88.17        <.0001                       2.335
+IMP_GENDER M                1     0.00739      0.1017          0.01        0.9421                       1.007
+S_MT                        1      0.0154     0.00543          8.01        0.0046          0.0703       1.015
+
+
+               Odds Ratio Estimates
+                         
+                                              Point
+Effect                                     Estimate
+
+IMP_AFFL                                      1.296
+IMP_AGE                                       0.949
+IMP_GENDER F vs U                             5.495
+IMP_GENDER M vs U                             2.370
+S_MT                                          1.015
+
+
+Step 5: Effect IMP_NGROUP entered.
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+Newton-Raphson Ridge Optimization
+
+Without Parameter Scaling
+
+Parameter Estimates              12
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                       2220.3233484
+Max Abs Gradient Element                      212.872                                                       
+
+
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+
+   1            0           2              0             1784        436.7       147.0         0        1.008
+   2            0           3              0             1753      30.8614     16.5976         0        1.103
+   3            0           4              0             1752       1.1353      0.7257         0        1.044
+   4            0           5              0             1752      0.00643     0.00465         0        1.006
+   5            0           6              0             1752      5.33E-7    3.921E-7         0        1.000
+
+                                            Optimization Results
+
+Iterations                                          5  Function Calls                                      8
+Hessian Calls                                       6  Active Constraints                                  0
+Objective Function                       1751.5780129  Max Abs Gradient Element                 3.9209653E-7
+Ridge                                               0  Actual Over Pred Change                  1.0000658457
+
+Convergence criterion (GCONV=1E-6) satisfied.                                                     
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+   4440.647        3503.156       937.4907       11         <.0001
+
+
+          Type 3 Analysis of Effects
+ 
+                            Wald
+Effect          DF    Chi-Square    Pr > ChiSq
+
+IMP_AFFL         1      341.8338        <.0001
+IMP_AGE          1      202.8406        <.0001
+IMP_GENDER       2      103.3579        <.0001
+IMP_NGROUP       6       15.5048        0.0167
+S_MT             1        7.6397        0.0057
+
+
+                                  Analysis of Maximum Likelihood Estimates
+ 
+                                             Standard          Wald                  Standardized
+Parameter                  DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+
+Intercept                   1     -2.0010      0.2978         45.16        <.0001                       0.135
+IMP_AFFL                    1      0.2605      0.0141        341.83        <.0001          0.4806       1.298
+IMP_AGE                     1     -0.0503     0.00353        202.84        <.0001         -0.3546       0.951
+IMP_GENDER F                1      0.8499      0.0906         87.93        <.0001                       2.339
+IMP_GENDER M                1      0.0115      0.1020          0.01        0.9101                       1.012
+IMP_NGROUP A                1     -0.0114      0.1846          0.00        0.9506                       0.989
+IMP_NGROUP B                1     -0.0673      0.1581          0.18        0.6703                       0.935
+IMP_NGROUP C                1      0.0817      0.1509          0.29        0.5883                       1.085
+IMP_NGROUP D                1      0.0921      0.1532          0.36        0.5479                       1.096
+IMP_NGROUP E                1     -0.0633      0.1683          0.14        0.7071                       0.939
+IMP_NGROUP F                1      0.3955      0.1522          6.75        0.0094                       1.485
+S_MT                        1      0.0150     0.00544          7.64        0.0057          0.0688       1.015
+
+
+               Odds Ratio Estimates
+                         
+                                              Point
+Effect                                     Estimate
+
+IMP_AFFL                                      1.298
+IMP_AGE                                       0.951
+IMP_GENDER F vs U                             5.536
+IMP_GENDER M vs U                             2.394
+IMP_NGROUP A vs U                             1.516
+IMP_NGROUP B vs U                             1.433
+IMP_NGROUP C vs U                             1.663
+IMP_NGROUP D vs U                             1.681
+IMP_NGROUP E vs U                             1.439
+IMP_NGROUP F vs U                             2.277
+S_MT                                          1.015
+
+
+Step 6: Effect S_TOIL entered.
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+Newton-Raphson Ridge Optimization
+
+Without Parameter Scaling
+
+Parameter Estimates              13
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                       2220.3233484
+Max Abs Gradient Element                      212.872                                                       
+
+
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+
+   1            0           2              0             1782        438.4       147.7         0        1.008
+   2            0           3              0             1751      31.1942     16.7730         0        1.103
+   3            0           4              0             1750       1.1528      0.7367         0        1.044
+   4            0           5              0             1750      0.00653     0.00471         0        1.006
+   5            0           6              0             1750     5.457E-7    4.008E-7         0        1.000
+
+                                            Optimization Results
+
+Iterations                                          5  Function Calls                                      8
+Hessian Calls                                       6  Active Constraints                                  0
+Objective Function                        1749.535356  Max Abs Gradient Element                 4.0076827E-7
+Ridge                                               0  Actual Over Pred Change                   1.000054747
+
+Convergence criterion (GCONV=1E-6) satisfied.                                                     
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+   4440.647        3499.071       941.5760       12         <.0001
+
+
+          Type 3 Analysis of Effects
+ 
+                            Wald
+Effect          DF    Chi-Square    Pr > ChiSq
+
+IMP_AFFL         1      341.4274        <.0001
+IMP_AGE          1      200.9264        <.0001
+IMP_GENDER       2      106.7231        <.0001
+IMP_NGROUP       6       15.2745        0.0182
+S_MT             1        7.0783        0.0078
+S_TOIL           1        4.0819        0.0433
+
+
+                                  Analysis of Maximum Likelihood Estimates
+ 
+                                             Standard          Wald                  Standardized
+Parameter                  DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+
+Intercept                   1     -2.2078      0.3161         48.80        <.0001                       0.110
+IMP_AFFL                    1      0.2604      0.0141        341.43        <.0001          0.4805       1.297
+IMP_AGE                     1     -0.0500     0.00353        200.93        <.0001         -0.3531       0.951
+IMP_GENDER F                1      0.8599      0.0909         89.52        <.0001                       2.363
+IMP_GENDER M                1     -0.0366      0.1048          0.12        0.7271                       0.964
+IMP_NGROUP A                1     -0.0140      0.1856          0.01        0.9400                       0.986
+IMP_NGROUP B                1     -0.0721      0.1593          0.20        0.6509                       0.930
+IMP_NGROUP C                1      0.0737      0.1521          0.23        0.6279                       1.076
+IMP_NGROUP D                1      0.0945      0.1543          0.37        0.5403                       1.099
+IMP_NGROUP E                1     -0.0621      0.1692          0.13        0.7136                       0.940
+IMP_NGROUP F                1      0.3903      0.1534          6.48        0.0109                       1.477
+S_MT                        1      0.0145     0.00545          7.08        0.0078          0.0664       1.015
+S_TOIL                      1      0.0110     0.00544          4.08        0.0433          0.0511       1.011
+
+
+               Odds Ratio Estimates
+                         
+                                              Point
+Effect                                     Estimate
+
+IMP_AFFL                                      1.297
+IMP_AGE                                       0.951
+IMP_GENDER F vs U                             5.383
+IMP_GENDER M vs U                             2.196
+IMP_NGROUP A vs U                             1.487
+IMP_NGROUP B vs U                             1.403
+IMP_NGROUP C vs U                             1.623
+IMP_NGROUP D vs U                             1.657
+IMP_NGROUP E vs U                             1.417
+IMP_NGROUP F vs U                             2.227
+S_MT                                          1.015
+S_TOIL                                        1.011
+
+
+NOTE: No (additional) effects met the 0.05 significance level for entry into the model.
+
+
+                           Summary of Stepwise Selection
+ 
+              Effect              Number         Score          Wald
+    Step    Entered         DF        In    Chi-Square    Chi-Square    Pr > ChiSq
+
+       1    IMP_AFFL         1         1      522.7654                      <.0001
+       2    IMP_AGE          1         2      255.1485                      <.0001
+       3    IMP_GENDER       2         3      120.1142                      <.0001
+       4    S_MT             1         4        8.0322                      0.0046
+       5    IMP_NGROUP       6         5       15.5928                      0.0161
+       6    S_TOIL           1         6        4.0873                      0.0432
+
+
+The selected model is the model trained in the last step (Step 6). It consists of the following effects:
+
+Intercept  IMP_AFFL  IMP_AGE  IMP_GENDER  IMP_NGROUP  S_MT  S_TOIL  
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+   4440.647        3499.071       941.5760       12         <.0001
+
+
+          Type 3 Analysis of Effects
+ 
+                            Wald
+Effect          DF    Chi-Square    Pr > ChiSq
+
+IMP_AFFL         1      341.4274        <.0001
+IMP_AGE          1      200.9264        <.0001
+IMP_GENDER       2      106.7231        <.0001
+IMP_NGROUP       6       15.2745        0.0182
+S_MT             1        7.0783        0.0078
+S_TOIL           1        4.0819        0.0433
+
+
+                                  Analysis of Maximum Likelihood Estimates
+ 
+                                             Standard          Wald                  Standardized
+Parameter                  DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+
+Intercept                   1     -2.2078      0.3161         48.80        <.0001                       0.110
+IMP_AFFL                    1      0.2604      0.0141        341.43        <.0001          0.4805       1.297
+IMP_AGE                     1     -0.0500     0.00353        200.93        <.0001         -0.3531       0.951
+IMP_GENDER F                1      0.8599      0.0909         89.52        <.0001                       2.363
+IMP_GENDER M                1     -0.0366      0.1048          0.12        0.7271                       0.964
+IMP_NGROUP A                1     -0.0140      0.1856          0.01        0.9400                       0.986
+IMP_NGROUP B                1     -0.0721      0.1593          0.20        0.6509                       0.930
+IMP_NGROUP C                1      0.0737      0.1521          0.23        0.6279                       1.076
+IMP_NGROUP D                1      0.0945      0.1543          0.37        0.5403                       1.099
+IMP_NGROUP E                1     -0.0621      0.1692          0.13        0.7136                       0.940
+IMP_NGROUP F                1      0.3903      0.1534          6.48        0.0109                       1.477
+S_MT                        1      0.0145     0.00545          7.08        0.0078          0.0664       1.015
+S_TOIL                      1      0.0110     0.00544          4.08        0.0433          0.0511       1.011
+
+
+               Odds Ratio Estimates
+                         
+                                              Point
+Effect                                     Estimate
+
+IMP_AFFL                                      1.297
+IMP_AGE                                       0.951
+IMP_GENDER F vs U                             5.383
+IMP_GENDER M vs U                             2.196
+IMP_NGROUP A vs U                             1.487
+IMP_NGROUP B vs U                             1.403
+IMP_NGROUP C vs U                             1.623
+IMP_NGROUP D vs U                             1.657
+IMP_NGROUP E vs U                             1.417
+IMP_NGROUP F vs U                             2.227
+S_MT                                          1.015
+S_TOIL                                        1.011

@@ -1,0 +1,25 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+            Measurement    Frequency
+Role           Level         Count
+
+ID           INTERVAL          1    
+INPUT        INTERVAL          8    
+INPUT        NOMINAL           6    
+REJECTED     INTERVAL          2    
+TARGET       BINARY            1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Sampling Summary
+
+                                  Number of
+ Type          Data Set         Observations
+
+DATA      EMWS1.Filter_TRAIN        2964    
+SAMPLE    EMWS1.Smpl_DATA           2964    

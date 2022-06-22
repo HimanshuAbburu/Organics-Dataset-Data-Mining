@@ -1,0 +1,157 @@
+*------------------------------------------------------------*
+ Node = 42
+*------------------------------------------------------------*
+if AGE < 44.5
+AND AFFL >= 10.5 or MISSING
+then 
+ Tree Node Identifier   = 42
+ Number of Observations = 372
+ Predicted: ORGYN=1 = 0.73
+ Predicted: ORGYN=0 = 0.27
+ 
+*------------------------------------------------------------*
+ Node = 44
+*------------------------------------------------------------*
+if GENDER IS ONE OF: M, U or MISSING
+AND AGE < 44.5
+AND AFFL < 10.5
+then 
+ Tree Node Identifier   = 44
+ Number of Observations = 236
+ Predicted: ORGYN=1 = 0.21
+ Predicted: ORGYN=0 = 0.79
+ 
+*------------------------------------------------------------*
+ Node = 45
+*------------------------------------------------------------*
+if GENDER IS ONE OF: F
+AND AGE < 44.5
+AND AFFL < 5.5
+then 
+ Tree Node Identifier   = 45
+ Number of Observations = 64
+ Predicted: ORGYN=1 = 0.27
+ Predicted: ORGYN=0 = 0.73
+ 
+*------------------------------------------------------------*
+ Node = 46
+*------------------------------------------------------------*
+if GENDER IS ONE OF: F
+AND AGE < 44.5
+AND AFFL < 10.5 AND AFFL >= 5.5 or MISSING
+then 
+ Tree Node Identifier   = 46
+ Number of Observations = 326
+ Predicted: ORGYN=1 = 0.55
+ Predicted: ORGYN=0 = 0.45
+ 
+*------------------------------------------------------------*
+ Node = 49
+*------------------------------------------------------------*
+if AGE >= 44.5 or MISSING
+AND AFFL < 17.5 AND AFFL >= 12.5 or MISSING
+then 
+ Tree Node Identifier   = 49
+ Number of Observations = 267
+ Predicted: ORGYN=1 = 0.42
+ Predicted: ORGYN=0 = 0.58
+ 
+*------------------------------------------------------------*
+ Node = 50
+*------------------------------------------------------------*
+if AGE >= 44.5 or MISSING
+AND AFFL >= 17.5
+then 
+ Tree Node Identifier   = 50
+ Number of Observations = 22
+ Predicted: ORGYN=1 = 0.91
+ Predicted: ORGYN=0 = 0.09
+ 
+*------------------------------------------------------------*
+ Node = 54
+*------------------------------------------------------------*
+if GENDER IS ONE OF: M, U or MISSING
+AND AGE >= 76.5 or MISSING
+AND AFFL < 12.5 or MISSING
+then 
+ Tree Node Identifier   = 54
+ Number of Observations = 156
+ Predicted: ORGYN=1 = 0.15
+ Predicted: ORGYN=0 = 0.85
+ 
+*------------------------------------------------------------*
+ Node = 55
+*------------------------------------------------------------*
+if GENDER IS ONE OF: F
+AND AGE >= 44.5 or MISSING
+AND AFFL < 8.5
+then 
+ Tree Node Identifier   = 55
+ Number of Observations = 794
+ Predicted: ORGYN=1 = 0.11
+ Predicted: ORGYN=0 = 0.89
+ 
+*------------------------------------------------------------*
+ Node = 56
+*------------------------------------------------------------*
+if GENDER IS ONE OF: F
+AND AGE >= 44.5 or MISSING
+AND AFFL < 12.5 AND AFFL >= 8.5 or MISSING
+then 
+ Tree Node Identifier   = 56
+ Number of Observations = 589
+ Predicted: ORGYN=1 = 0.27
+ Predicted: ORGYN=0 = 0.73
+ 
+*------------------------------------------------------------*
+ Node = 59
+*------------------------------------------------------------*
+if S_TOIL < 42.04 or MISSING
+AND GENDER IS ONE OF: M, U or MISSING
+AND AGE < 76.5 AND AGE >= 44.5
+AND AFFL < 7.5 or MISSING
+then 
+ Tree Node Identifier   = 59
+ Number of Observations = 588
+ Predicted: ORGYN=1 = 0.02
+ Predicted: ORGYN=0 = 0.98
+ 
+*------------------------------------------------------------*
+ Node = 60
+*------------------------------------------------------------*
+if S_TOIL >= 42.04
+AND GENDER IS ONE OF: M, U or MISSING
+AND AGE < 76.5 AND AGE >= 44.5
+AND AFFL < 7.5 or MISSING
+then 
+ Tree Node Identifier   = 60
+ Number of Observations = 8
+ Predicted: ORGYN=1 = 0.25
+ Predicted: ORGYN=0 = 0.75
+ 
+*------------------------------------------------------------*
+ Node = 61
+*------------------------------------------------------------*
+if S_CONV < 6.865
+AND GENDER IS ONE OF: M, U or MISSING
+AND AGE < 76.5 AND AGE >= 44.5
+AND AFFL < 12.5 AND AFFL >= 7.5
+then 
+ Tree Node Identifier   = 61
+ Number of Observations = 182
+ Predicted: ORGYN=1 = 0.14
+ Predicted: ORGYN=0 = 0.86
+ 
+*------------------------------------------------------------*
+ Node = 62
+*------------------------------------------------------------*
+if S_CONV >= 6.865 or MISSING
+AND GENDER IS ONE OF: M, U or MISSING
+AND AGE < 76.5 AND AGE >= 44.5
+AND AFFL < 12.5 AND AFFL >= 7.5
+then 
+ Tree Node Identifier   = 62
+ Number of Observations = 396
+ Predicted: ORGYN=1 = 0.05
+ Predicted: ORGYN=0 = 0.95
+ 

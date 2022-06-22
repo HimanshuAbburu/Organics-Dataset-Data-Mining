@@ -1,0 +1,64 @@
+*------------------------------------------------------------*
+User:                P2503016
+Date:                30 November 2021
+Time:                13:03:17
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+ID           INTERVAL          1
+INPUT        INTERVAL          8
+INPUT        NOMINAL           6
+REJECTED     INTERVAL          2
+TARGET       BINARY            1
+ 
+ 
+ 
+ 
+Sampling Summary
+ 
+                                  Number of
+ Type          Data Set         Observations
+ 
+DATA      EMWS1.Filter_TRAIN        2964
+SAMPLE    EMWS1.Smpl_DATA           2964
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+Summary Statistics for Class Targets
+(maximum 500 observations printed)
+ 
+Data=DATA
+ 
+            Numeric    Formatted    Frequency
+Variable     Value       Value        Count      Percent    Label
+ 
+ ORGYN         0           0           2198      74.1565
+ ORGYN         1           1            766      25.8435
+ 
+ 
+Data=SAMPLE
+ 
+            Numeric    Formatted    Frequency
+Variable     Value       Value        Count      Percent    Label
+ 
+ ORGYN         0           0           2198      74.1565
+ ORGYN         1           1            766      25.8435

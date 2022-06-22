@@ -1,0 +1,1759 @@
+*------------------------------------------------------------*
+* Training Log
+Date:                07 December 2021
+Time:                16:11:48
+*------------------------------------------------------------*
+11447  data work.MdlComp3;
+11448  set EMWS1.em_nodeid;
+11449  where
+11450  (NODEID="Neural7" and LABEL ne 'Imp 4 Hidden NN')
+11451  OR (NODEID="Neural3" and LABEL ne 'Imputed Neural Network')
+11452  OR (NODEID="Neural2" and LABEL ne 'Default Neural Network')
+11453  OR (NODEID="Neural5" and LABEL ne 'Transformed Neural Network')
+11454  OR (NODEID="Neural4" and LABEL ne 'Filtered Neural Network')
+11455  ;
+11456  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.EM_NODEID.
+      WHERE ((NODEID='Neural7') and (LABEL not = 'Imp 4 Hidden NN')) or ((NODEID='Neural3') and (LABEL not = 'Imputed Neural Network')) or ((NODEID='Neural2') and (LABEL not = 'Default Neural Network')) or ((NODEID='Neural5') and (LABEL not = 'Transformed 
+      Neural Network')) or ((NODEID='Neural4') and (LABEL not = 'Filtered Neural Network'));
+NOTE: The data set WORK.MDLCOMP3 has 1 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+11457  data EMWS1.MdlComp3_EMOUTFIT;
+11458  set EMWS1.MdlComp3_EMOUTFIT;
+11459  if MODEL = "Neural7" then MODELDESCRIPTION= '5 Hidden NN';
+11460  run;
+
+NOTE: There were 5 observations read from the data set EMWS1.MDLCOMP3_EMOUTFIT.
+NOTE: The data set EMWS1.MDLCOMP3_EMOUTFIT has 5 observations and 95 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.00 seconds
+      
+
+11461  data EMWS1.MdlComp3_EMEVENTREPORT;
+11462  set EMWS1.MdlComp3_EMEVENTREPORT;
+11463  if MODEL = "Neural7" then MODELDESCRIPTION= '5 Hidden NN';
+11464  run;
+
+NOTE: There were 10 observations read from the data set EMWS1.MDLCOMP3_EMEVENTREPORT.
+NOTE: The data set EMWS1.MDLCOMP3_EMEVENTREPORT has 10 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.00 seconds
+      
+
+11465  data EMWS1.MdlComp3_EMCLASSIFICATION;
+11466  set EMWS1.MdlComp3_EMCLASSIFICATION;
+11467  if MODEL = "Neural7" then MODELDESCRIPTION= '5 Hidden NN';
+11468  run;
+
+NOTE: There were 40 observations read from the data set EMWS1.MDLCOMP3_EMCLASSIFICATION.
+NOTE: The data set EMWS1.MDLCOMP3_EMCLASSIFICATION has 40 observations and 15 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.00 seconds
+      
+
+11469  data EMWS1.MdlComp3_EMROC;
+11470  set EMWS1.MdlComp3_EMROC;
+11471  if MODEL = "Neural7" then MODELDESCRIPTION= '5 Hidden NN';
+11472  run;
+
+NOTE: There were 14534 observations read from the data set EMWS1.MDLCOMP3_EMROC.
+NOTE: The data set EMWS1.MDLCOMP3_EMROC has 14534 observations and 18 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.22 seconds
+      cpu time            0.01 seconds
+      
+
+11474  proc freq data=EMWS1.MdlComp3_VariableSet noprint;
+11475  table ROLE*LEVEL/out=WORK.MdlComp3META;
+11476  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.MDLCOMP3_VARIABLESET.
+NOTE: The data set WORK.MDLCOMP3META has 1 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.01 seconds
+      
+
+11477  proc print data=WORK.MdlComp3META label noobs;
+11478  var ROLE LEVEL COUNT;
+11479  label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+11480  title9 ' ';
+11481  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+11482  run;
+
+NOTE: There were 1 observations read from the data set WORK.MDLCOMP3META.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+11483  title10;
+
+11484  %let _hpflow = 0;
+11485  data _null_;
+11486  set EMWS1.Neural7_EMINFO;
+11487  where key="HPDMSAMPLE";
+11488  call symput('_hpflow', '1');
+11489  run;
+
+NOTE: There were 0 observations read from the data set EMWS1.NEURAL7_EMINFO.
+      WHERE key='HPDMSAMPLE';
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11490  %let _hpflow = 0;
+11491  data _null_;
+11492  set EMWS1.Neural3_EMINFO;
+11493  where key="HPDMSAMPLE";
+11494  call symput('_hpflow', '1');
+11495  run;
+
+NOTE: There were 0 observations read from the data set EMWS1.NEURAL3_EMINFO.
+      WHERE key='HPDMSAMPLE';
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11496  %let _hpflow = 0;
+11497  data _null_;
+11498  set EMWS1.Neural5_EMINFO;
+11499  where key="HPDMSAMPLE";
+11500  call symput('_hpflow', '1');
+11501  run;
+
+NOTE: There were 0 observations read from the data set EMWS1.NEURAL5_EMINFO.
+      WHERE key='HPDMSAMPLE';
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11502  %let _hpflow = 0;
+11503  data _null_;
+11504  set EMWS1.Neural4_EMINFO;
+11505  where key="HPDMSAMPLE";
+11506  call symput('_hpflow', '1');
+11507  run;
+
+NOTE: There were 0 observations read from the data set EMWS1.NEURAL4_EMINFO.
+      WHERE key='HPDMSAMPLE';
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11508  %let _hpflow = 0;
+11509  data _null_;
+11510  set EMWS1.Neural2_EMINFO;
+11511  where key="HPDMSAMPLE";
+11512  call symput('_hpflow', '1');
+11513  run;
+
+NOTE: There were 0 observations read from the data set EMWS1.NEURAL2_EMINFO.
+      WHERE key='HPDMSAMPLE';
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11514  data _null_;
+11515  set EMWS1.em_nodeid;
+11516  where upcase(NODEID) = upcase("Neural7");
+11517  call symput('_MODELDESC', strip(tranwrd(LABEL, '"', '""')));
+11518  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.EM_NODEID.
+      WHERE UPCASE(NODEID)='NEURAL7';
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11519  data EMWS1.MdlComp3_EMRANK;
+11520  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+11521  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGETLABEL
+11521! =
+11522     "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11523  retain parent "Neural7" MODEL "Neural7" MODELDESCRIPTION "5 Hidden NN" TARGETLABEL "";
+11524  set EMWS1.Neural7_EMRANK;
+11525  where upcase(TARGET) = upcase("ORGYN");
+11526  run;
+
+NOTE: There were 40 observations read from the data set EMWS1.NEURAL7_EMRANK.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set EMWS1.MDLCOMP3_EMRANK has 40 observations and 38 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.01 seconds
+      
+
+11527  data EMWS1.MdlComp3_EMSCOREDIST;
+11528  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+11529  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGETLABEL
+11529! =
+11530     "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11531  retain parent "Neural7" MODEL "Neural7" MODELDESCRIPTION "5 Hidden NN" TARGETLABEL "";
+11532  set EMWS1.Neural7_EMSCOREDIST;
+11533  where upcase(TARGET) = upcase("ORGYN");
+11534  run;
+
+NOTE: There were 40 observations read from the data set EMWS1.NEURAL7_EMSCOREDIST.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set EMWS1.MDLCOMP3_EMSCOREDIST has 40 observations and 24 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.00 seconds
+      
+
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _INIT >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL SETMETADATA >> 
+NOTE: There were 1 observations read from the data set EMWS1.NEURAL7_EMINFO.
+      WHERE (TARGET='ORGYN') and (KEY='DECMETA');
+NOTE: The data set WORK.EMINFO42BC_80O has 1 observations and 3 variables.
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL SETMETADATA >> 
+NOTE: There were 1 observations read from the data set EMWS1.NEURAL7_EMINFO.
+      WHERE (TARGET='ORGYN') and (KEY='DECDATA');
+NOTE: The data set WORK.EMINFO42BC_80O has 1 observations and 3 variables.
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _term >> 
+11535  data WORK.Neural7_OUTFIT;
+11536  set EMWS1.Neural7_EMOUTFIT;
+11537  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.NEURAL7_EMOUTFIT.
+NOTE: The data set WORK.NEURAL7_OUTFIT has 1 observations and 51 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11538  data EMWS1.MdlComp3_EMOUTFIT;
+11539  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 TARGET $32 TARGETLABEL $200;
+11540  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGETLABEL
+11540! =
+11541     "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11542  retain parent "Neural7" MODEL "Neural7" MODELDESCRIPTION "5 Hidden NN" TARGETLABEL "";
+11543  set WORK.Neural7_OUTFIT;
+11544  where upcase(TARGET) = upcase("ORGYN");
+11545  run;
+
+NOTE: There were 1 observations read from the data set WORK.NEURAL7_OUTFIT.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set EMWS1.MDLCOMP3_EMOUTFIT has 1 observations and 54 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.00 seconds
+      
+
+11546  data EMWS1.MdlComp3_EMCLASSIFICATION;
+11547  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+11548  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGETLABEL
+11548! =
+11549     "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11550  retain parent "Neural7" MODEL "Neural7" MODELDESCRIPTION "5 Hidden NN" TARGETLABEL "";
+11551  set EMWS1.Neural7_EMCLASSIFICATION;
+11552  where upcase(TARGET) = upcase("ORGYN");
+11553  run;
+
+NOTE: There were 8 observations read from the data set EMWS1.NEURAL7_EMCLASSIFICATION.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set EMWS1.MDLCOMP3_EMCLASSIFICATION has 8 observations and 15 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.00 seconds
+      
+
+11554  data EMWS1.MdlComp3_EMEVENTREPORT;
+11555  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+11556  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGETLABEL
+11556! =
+11557     "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11558  retain parent "Neural7" MODEL "Neural7" MODELDESCRIPTION "5 Hidden NN" TARGETLABEL "";
+11559  set EMWS1.Neural7_EMEVENTREPORT;
+11560  where upcase(TARGET) = upcase("ORGYN");
+11561  run;
+
+NOTE: There were 2 observations read from the data set EMWS1.NEURAL7_EMEVENTREPORT.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set EMWS1.MDLCOMP3_EMEVENTREPORT has 2 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.00 seconds
+      
+
+11562  data _null_;
+11563  set EMWS1.em_nodeid;
+11564  where upcase(NODEID) = upcase("Neural3");
+11565  call symput('_MODELDESC', strip(tranwrd(LABEL, '"', '""')));
+11566  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.EM_NODEID.
+      WHERE UPCASE(NODEID)='NEURAL3';
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11567  data work.MdlComp3_TEMP;
+11568  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+11569  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+11570     "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11571  retain parent "Neural3" MODEL "Neural3" MODELDESCRIPTION "Imputed Neural Network" TARGETLABEL "";
+11572  set EMWS1.Neural3_EMRANK;
+11573  where upcase(TARGET) = upcase("ORGYN");
+11574  run;
+
+NOTE: There were 40 observations read from the data set EMWS1.NEURAL3_EMRANK.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set WORK.MDLCOMP3_TEMP has 40 observations and 38 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.03 seconds
+      
+
+11575  data EMWS1.MdlComp3_EMRANK;
+11576  set EMWS1.MdlComp3_EMRANK work.MdlComp3_TEMP;
+11577  run;
+
+NOTE: There were 40 observations read from the data set EMWS1.MDLCOMP3_EMRANK.
+NOTE: There were 40 observations read from the data set WORK.MDLCOMP3_TEMP.
+NOTE: The data set EMWS1.MDLCOMP3_EMRANK has 80 observations and 38 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.08 seconds
+      cpu time            0.00 seconds
+      
+
+11578  data work.MdlComp3_TEMP;
+11579  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+11580  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+11581     "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11582  retain parent "Neural3" MODEL "Neural3" MODELDESCRIPTION "Imputed Neural Network" TARGETLABEL "";
+11583  set EMWS1.Neural3_EMSCOREDIST;
+11584  where upcase(TARGET) = upcase("ORGYN");
+11585  run;
+
+NOTE: There were 40 observations read from the data set EMWS1.NEURAL3_EMSCOREDIST.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set WORK.MDLCOMP3_TEMP has 40 observations and 24 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.00 seconds
+      
+
+11586  data EMWS1.MdlComp3_EMSCOREDIST;
+11587  set EMWS1.MdlComp3_EMSCOREDIST work.MdlComp3_TEMP;
+11588  run;
+
+NOTE: There were 40 observations read from the data set EMWS1.MDLCOMP3_EMSCOREDIST.
+NOTE: There were 40 observations read from the data set WORK.MDLCOMP3_TEMP.
+NOTE: The data set EMWS1.MDLCOMP3_EMSCOREDIST has 80 observations and 24 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.00 seconds
+      
+
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _INIT >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL SETMETADATA >> 
+NOTE: There were 1 observations read from the data set EMWS1.NEURAL3_EMINFO.
+      WHERE (TARGET='ORGYN') and (KEY='DECMETA');
+NOTE: The data set WORK.EMINFO437DPG8R has 1 observations and 3 variables.
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL SETMETADATA >> 
+NOTE: There were 1 observations read from the data set EMWS1.NEURAL3_EMINFO.
+      WHERE (TARGET='ORGYN') and (KEY='DECDATA');
+NOTE: The data set WORK.EMINFO437DPG8R has 1 observations and 3 variables.
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _term >> 
+11589  data WORK.Neural3_OUTFIT;
+11590  set EMWS1.Neural3_EMOUTFIT;
+11591  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.NEURAL3_EMOUTFIT.
+NOTE: The data set WORK.NEURAL3_OUTFIT has 1 observations and 51 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+11592  data work.MdlComp3_TEMP;
+11593  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 TARGET $32 TARGETLABEL $200;
+11594  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+11595     "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11596  retain parent "Neural3" MODEL "Neural3" MODELDESCRIPTION "Imputed Neural Network" TARGETLABEL "";
+11597  set WORK.Neural3_OUTFIT;
+11598  where upcase(TARGET) = upcase("ORGYN");
+11599  run;
+
+NOTE: There were 1 observations read from the data set WORK.NEURAL3_OUTFIT.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set WORK.MDLCOMP3_TEMP has 1 observations and 54 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.00 seconds
+      
+
+11600  data EMWS1.MdlComp3_EMOUTFIT;
+11601  set EMWS1.MdlComp3_EMOUTFIT work.MdlComp3_TEMP;
+11602  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.MDLCOMP3_EMOUTFIT.
+NOTE: There were 1 observations read from the data set WORK.MDLCOMP3_TEMP.
+NOTE: The data set EMWS1.MDLCOMP3_EMOUTFIT has 2 observations and 54 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.00 seconds
+      
+
+11603  data work.MdlComp3_TEMP;
+11604  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+11605  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+11606     "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11607  retain parent "Neural3" MODEL "Neural3" MODELDESCRIPTION "Imputed Neural Network" TARGETLABEL "";
+11608  set EMWS1.Neural3_EMCLASSIFICATION;
+11609  where upcase(TARGET) = upcase("ORGYN");
+11610  run;
+
+NOTE: There were 8 observations read from the data set EMWS1.NEURAL3_EMCLASSIFICATION.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set WORK.MDLCOMP3_TEMP has 8 observations and 15 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.03 seconds
+      
+
+11611  data EMWS1.MdlComp3_EMCLASSIFICATION;
+11612  set EMWS1.MdlComp3_EMCLASSIFICATION work.MdlComp3_TEMP;
+11613  run;
+
+NOTE: There were 8 observations read from the data set EMWS1.MDLCOMP3_EMCLASSIFICATION.
+NOTE: There were 8 observations read from the data set WORK.MDLCOMP3_TEMP.
+NOTE: The data set EMWS1.MDLCOMP3_EMCLASSIFICATION has 16 observations and 15 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.00 seconds
+      
+
+11614  data work.MdlComp3_TEMP;
+11615  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+11616  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+11617     "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11618  retain parent "Neural3" MODEL "Neural3" MODELDESCRIPTION "Imputed Neural Network" TARGETLABEL "";
+11619  set EMWS1.Neural3_EMEVENTREPORT;
+11620  where upcase(TARGET) = upcase("ORGYN");
+11621  run;
+
+NOTE: There were 2 observations read from the data set EMWS1.NEURAL3_EMEVENTREPORT.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set WORK.MDLCOMP3_TEMP has 2 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.00 seconds
+      
+
+11622  data EMWS1.MdlComp3_EMEVENTREPORT;
+11623  set EMWS1.MdlComp3_EMEVENTREPORT work.MdlComp3_TEMP;
+11624  run;
+
+NOTE: There were 2 observations read from the data set EMWS1.MDLCOMP3_EMEVENTREPORT.
+NOTE: There were 2 observations read from the data set WORK.MDLCOMP3_TEMP.
+NOTE: The data set EMWS1.MDLCOMP3_EMEVENTREPORT has 4 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.01 seconds
+      
+
+11625  data _null_;
+11626  set EMWS1.em_nodeid;
+11627  where upcase(NODEID) = upcase("Neural5");
+11628  call symput('_MODELDESC', strip(tranwrd(LABEL, '"', '""')));
+11629  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.EM_NODEID.
+      WHERE UPCASE(NODEID)='NEURAL5';
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11630  data work.MdlComp3_TEMP;
+11631  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+11632  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+11633     "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11634  retain parent "Neural5" MODEL "Neural5" MODELDESCRIPTION "Transformed Neural Network" TARGETLABEL "";
+11635  set EMWS1.Neural5_EMRANK;
+11636  where upcase(TARGET) = upcase("ORGYN");
+11637  run;
+
+NOTE: There were 40 observations read from the data set EMWS1.NEURAL5_EMRANK.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set WORK.MDLCOMP3_TEMP has 40 observations and 38 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.01 seconds
+      
+
+11638  data EMWS1.MdlComp3_EMRANK;
+11639  set EMWS1.MdlComp3_EMRANK work.MdlComp3_TEMP;
+11640  run;
+
+NOTE: There were 80 observations read from the data set EMWS1.MDLCOMP3_EMRANK.
+NOTE: There were 40 observations read from the data set WORK.MDLCOMP3_TEMP.
+NOTE: The data set EMWS1.MDLCOMP3_EMRANK has 120 observations and 38 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.00 seconds
+      
+
+11641  data work.MdlComp3_TEMP;
+11642  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+11643  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+11644     "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11645  retain parent "Neural5" MODEL "Neural5" MODELDESCRIPTION "Transformed Neural Network" TARGETLABEL "";
+11646  set EMWS1.Neural5_EMSCOREDIST;
+11647  where upcase(TARGET) = upcase("ORGYN");
+11648  run;
+
+NOTE: There were 38 observations read from the data set EMWS1.NEURAL5_EMSCOREDIST.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set WORK.MDLCOMP3_TEMP has 38 observations and 24 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.01 seconds
+      
+
+11649  data EMWS1.MdlComp3_EMSCOREDIST;
+11650  set EMWS1.MdlComp3_EMSCOREDIST work.MdlComp3_TEMP;
+11651  run;
+
+NOTE: There were 80 observations read from the data set EMWS1.MDLCOMP3_EMSCOREDIST.
+NOTE: There were 38 observations read from the data set WORK.MDLCOMP3_TEMP.
+NOTE: The data set EMWS1.MDLCOMP3_EMSCOREDIST has 118 observations and 24 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.00 seconds
+      
+
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _INIT >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL SETMETADATA >> 
+NOTE: There were 1 observations read from the data set EMWS1.NEURAL5_EMINFO.
+      WHERE (TARGET='ORGYN') and (KEY='DECMETA');
+NOTE: The data set WORK.EMINFO4144FUT4 has 1 observations and 3 variables.
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL SETMETADATA >> 
+NOTE: There were 1 observations read from the data set EMWS1.NEURAL5_EMINFO.
+      WHERE (TARGET='ORGYN') and (KEY='DECDATA');
+NOTE: The data set WORK.EMINFO4144FUT4 has 1 observations and 3 variables.
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _term >> 
+11652  data WORK.Neural5_OUTFIT;
+11653  set EMWS1.Neural5_EMOUTFIT;
+11654  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.NEURAL5_EMOUTFIT.
+NOTE: The data set WORK.NEURAL5_OUTFIT has 1 observations and 51 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+11655  data work.MdlComp3_TEMP;
+11656  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 TARGET $32 TARGETLABEL $200;
+11657  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+11658     "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11659  retain parent "Neural5" MODEL "Neural5" MODELDESCRIPTION "Transformed Neural Network" TARGETLABEL "";
+11660  set WORK.Neural5_OUTFIT;
+11661  where upcase(TARGET) = upcase("ORGYN");
+11662  run;
+
+NOTE: There were 1 observations read from the data set WORK.NEURAL5_OUTFIT.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set WORK.MDLCOMP3_TEMP has 1 observations and 54 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.00 seconds
+      
+
+11663  data EMWS1.MdlComp3_EMOUTFIT;
+11664  set EMWS1.MdlComp3_EMOUTFIT work.MdlComp3_TEMP;
+11665  run;
+
+NOTE: There were 2 observations read from the data set EMWS1.MDLCOMP3_EMOUTFIT.
+NOTE: There were 1 observations read from the data set WORK.MDLCOMP3_TEMP.
+NOTE: The data set EMWS1.MDLCOMP3_EMOUTFIT has 3 observations and 54 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.00 seconds
+      
+
+11666  data work.MdlComp3_TEMP;
+11667  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+11668  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+11669     "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11670  retain parent "Neural5" MODEL "Neural5" MODELDESCRIPTION "Transformed Neural Network" TARGETLABEL "";
+11671  set EMWS1.Neural5_EMCLASSIFICATION;
+11672  where upcase(TARGET) = upcase("ORGYN");
+11673  run;
+
+NOTE: There were 8 observations read from the data set EMWS1.NEURAL5_EMCLASSIFICATION.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set WORK.MDLCOMP3_TEMP has 8 observations and 15 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.01 seconds
+      
+
+11674  data EMWS1.MdlComp3_EMCLASSIFICATION;
+11675  set EMWS1.MdlComp3_EMCLASSIFICATION work.MdlComp3_TEMP;
+11676  run;
+
+NOTE: There were 16 observations read from the data set EMWS1.MDLCOMP3_EMCLASSIFICATION.
+NOTE: There were 8 observations read from the data set WORK.MDLCOMP3_TEMP.
+NOTE: The data set EMWS1.MDLCOMP3_EMCLASSIFICATION has 24 observations and 15 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.00 seconds
+      
+
+11677  data work.MdlComp3_TEMP;
+11678  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+11679  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+11680     "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11681  retain parent "Neural5" MODEL "Neural5" MODELDESCRIPTION "Transformed Neural Network" TARGETLABEL "";
+11682  set EMWS1.Neural5_EMEVENTREPORT;
+11683  where upcase(TARGET) = upcase("ORGYN");
+11684  run;
+
+NOTE: There were 2 observations read from the data set EMWS1.NEURAL5_EMEVENTREPORT.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set WORK.MDLCOMP3_TEMP has 2 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.01 seconds
+      
+
+11685  data EMWS1.MdlComp3_EMEVENTREPORT;
+11686  set EMWS1.MdlComp3_EMEVENTREPORT work.MdlComp3_TEMP;
+11687  run;
+
+NOTE: There were 4 observations read from the data set EMWS1.MDLCOMP3_EMEVENTREPORT.
+NOTE: There were 2 observations read from the data set WORK.MDLCOMP3_TEMP.
+NOTE: The data set EMWS1.MDLCOMP3_EMEVENTREPORT has 6 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.00 seconds
+      
+
+11688  data _null_;
+11689  set EMWS1.em_nodeid;
+11690  where upcase(NODEID) = upcase("Neural4");
+11691  call symput('_MODELDESC', strip(tranwrd(LABEL, '"', '""')));
+11692  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.EM_NODEID.
+      WHERE UPCASE(NODEID)='NEURAL4';
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11693  data work.MdlComp3_TEMP;
+11694  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+11695  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+11696     "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11697  retain parent "Neural4" MODEL "Neural4" MODELDESCRIPTION "Filtered Neural Network" TARGETLABEL "";
+11698  set EMWS1.Neural4_EMRANK;
+11699  where upcase(TARGET) = upcase("ORGYN");
+11700  run;
+
+NOTE: There were 40 observations read from the data set EMWS1.NEURAL4_EMRANK.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set WORK.MDLCOMP3_TEMP has 40 observations and 38 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.01 seconds
+      
+
+11701  data EMWS1.MdlComp3_EMRANK;
+11702  set EMWS1.MdlComp3_EMRANK work.MdlComp3_TEMP;
+11703  run;
+
+NOTE: There were 120 observations read from the data set EMWS1.MDLCOMP3_EMRANK.
+NOTE: There were 40 observations read from the data set WORK.MDLCOMP3_TEMP.
+NOTE: The data set EMWS1.MDLCOMP3_EMRANK has 160 observations and 38 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.00 seconds
+      
+
+11704  data work.MdlComp3_TEMP;
+11705  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+11706  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+11707     "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11708  retain parent "Neural4" MODEL "Neural4" MODELDESCRIPTION "Filtered Neural Network" TARGETLABEL "";
+11709  set EMWS1.Neural4_EMSCOREDIST;
+11710  where upcase(TARGET) = upcase("ORGYN");
+11711  run;
+
+NOTE: There were 40 observations read from the data set EMWS1.NEURAL4_EMSCOREDIST.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set WORK.MDLCOMP3_TEMP has 40 observations and 24 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.01 seconds
+      
+
+11712  data EMWS1.MdlComp3_EMSCOREDIST;
+11713  set EMWS1.MdlComp3_EMSCOREDIST work.MdlComp3_TEMP;
+11714  run;
+
+NOTE: There were 118 observations read from the data set EMWS1.MDLCOMP3_EMSCOREDIST.
+NOTE: There were 40 observations read from the data set WORK.MDLCOMP3_TEMP.
+NOTE: The data set EMWS1.MDLCOMP3_EMSCOREDIST has 158 observations and 24 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.01 seconds
+      
+
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _INIT >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL SETMETADATA >> 
+NOTE: There were 1 observations read from the data set EMWS1.NEURAL4_EMINFO.
+      WHERE (TARGET='ORGYN') and (KEY='DECMETA');
+NOTE: The data set WORK.EMINFO416UT2GR has 1 observations and 3 variables.
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL SETMETADATA >> 
+NOTE: There were 1 observations read from the data set EMWS1.NEURAL4_EMINFO.
+      WHERE (TARGET='ORGYN') and (KEY='DECDATA');
+NOTE: The data set WORK.EMINFO416UT2GR has 1 observations and 3 variables.
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _term >> 
+11715  data WORK.Neural4_OUTFIT;
+11716  set EMWS1.Neural4_EMOUTFIT;
+11717  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.NEURAL4_EMOUTFIT.
+NOTE: The data set WORK.NEURAL4_OUTFIT has 1 observations and 51 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+11718  data work.MdlComp3_TEMP;
+11719  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 TARGET $32 TARGETLABEL $200;
+11720  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+11721     "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11722  retain parent "Neural4" MODEL "Neural4" MODELDESCRIPTION "Filtered Neural Network" TARGETLABEL "";
+11723  set WORK.Neural4_OUTFIT;
+11724  where upcase(TARGET) = upcase("ORGYN");
+11725  run;
+
+NOTE: There were 1 observations read from the data set WORK.NEURAL4_OUTFIT.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set WORK.MDLCOMP3_TEMP has 1 observations and 54 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.04 seconds
+      
+
+11726  data EMWS1.MdlComp3_EMOUTFIT;
+11727  set EMWS1.MdlComp3_EMOUTFIT work.MdlComp3_TEMP;
+11728  run;
+
+NOTE: There were 3 observations read from the data set EMWS1.MDLCOMP3_EMOUTFIT.
+NOTE: There were 1 observations read from the data set WORK.MDLCOMP3_TEMP.
+NOTE: The data set EMWS1.MDLCOMP3_EMOUTFIT has 4 observations and 54 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.00 seconds
+      
+
+11729  data work.MdlComp3_TEMP;
+11730  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+11731  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+11732     "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11733  retain parent "Neural4" MODEL "Neural4" MODELDESCRIPTION "Filtered Neural Network" TARGETLABEL "";
+11734  set EMWS1.Neural4_EMCLASSIFICATION;
+11735  where upcase(TARGET) = upcase("ORGYN");
+11736  run;
+
+NOTE: There were 8 observations read from the data set EMWS1.NEURAL4_EMCLASSIFICATION.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set WORK.MDLCOMP3_TEMP has 8 observations and 15 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.01 seconds
+      
+
+11737  data EMWS1.MdlComp3_EMCLASSIFICATION;
+11738  set EMWS1.MdlComp3_EMCLASSIFICATION work.MdlComp3_TEMP;
+11739  run;
+
+NOTE: There were 24 observations read from the data set EMWS1.MDLCOMP3_EMCLASSIFICATION.
+NOTE: There were 8 observations read from the data set WORK.MDLCOMP3_TEMP.
+NOTE: The data set EMWS1.MDLCOMP3_EMCLASSIFICATION has 32 observations and 15 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.00 seconds
+      
+
+11740  data work.MdlComp3_TEMP;
+11741  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+11742  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+11743     "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11744  retain parent "Neural4" MODEL "Neural4" MODELDESCRIPTION "Filtered Neural Network" TARGETLABEL "";
+11745  set EMWS1.Neural4_EMEVENTREPORT;
+11746  where upcase(TARGET) = upcase("ORGYN");
+11747  run;
+
+NOTE: There were 2 observations read from the data set EMWS1.NEURAL4_EMEVENTREPORT.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set WORK.MDLCOMP3_TEMP has 2 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.01 seconds
+      
+
+11748  data EMWS1.MdlComp3_EMEVENTREPORT;
+11749  set EMWS1.MdlComp3_EMEVENTREPORT work.MdlComp3_TEMP;
+11750  run;
+
+NOTE: There were 6 observations read from the data set EMWS1.MDLCOMP3_EMEVENTREPORT.
+NOTE: There were 2 observations read from the data set WORK.MDLCOMP3_TEMP.
+NOTE: The data set EMWS1.MDLCOMP3_EMEVENTREPORT has 8 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.00 seconds
+      
+
+11751  data _null_;
+11752  set EMWS1.em_nodeid;
+11753  where upcase(NODEID) = upcase("Neural2");
+11754  call symput('_MODELDESC', strip(tranwrd(LABEL, '"', '""')));
+11755  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.EM_NODEID.
+      WHERE UPCASE(NODEID)='NEURAL2';
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11756  data work.MdlComp3_TEMP;
+11757  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+11758  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+11759     "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11760  retain parent "Neural2" MODEL "Neural2" MODELDESCRIPTION "Default Neural Network" TARGETLABEL "";
+11761  set EMWS1.Neural2_EMRANK;
+11762  where upcase(TARGET) = upcase("ORGYN");
+11763  run;
+
+NOTE: There were 40 observations read from the data set EMWS1.NEURAL2_EMRANK.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set WORK.MDLCOMP3_TEMP has 40 observations and 38 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.00 seconds
+      
+
+11764  data EMWS1.MdlComp3_EMRANK;
+11765  set EMWS1.MdlComp3_EMRANK work.MdlComp3_TEMP;
+11766  run;
+
+NOTE: There were 160 observations read from the data set EMWS1.MDLCOMP3_EMRANK.
+NOTE: There were 40 observations read from the data set WORK.MDLCOMP3_TEMP.
+NOTE: The data set EMWS1.MDLCOMP3_EMRANK has 200 observations and 38 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.00 seconds
+      
+
+11767  data work.MdlComp3_TEMP;
+11768  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+11769  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+11770     "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11771  retain parent "Neural2" MODEL "Neural2" MODELDESCRIPTION "Default Neural Network" TARGETLABEL "";
+11772  set EMWS1.Neural2_EMSCOREDIST;
+11773  where upcase(TARGET) = upcase("ORGYN");
+11774  run;
+
+NOTE: There were 40 observations read from the data set EMWS1.NEURAL2_EMSCOREDIST.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set WORK.MDLCOMP3_TEMP has 40 observations and 24 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.01 seconds
+      
+
+11775  data EMWS1.MdlComp3_EMSCOREDIST;
+11776  set EMWS1.MdlComp3_EMSCOREDIST work.MdlComp3_TEMP;
+11777  run;
+
+NOTE: There were 158 observations read from the data set EMWS1.MDLCOMP3_EMSCOREDIST.
+NOTE: There were 40 observations read from the data set WORK.MDLCOMP3_TEMP.
+NOTE: The data set EMWS1.MDLCOMP3_EMSCOREDIST has 198 observations and 24 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.01 seconds
+      
+
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _INIT >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL SETMETADATA >> 
+NOTE: There were 1 observations read from the data set EMWS1.NEURAL2_EMINFO.
+      WHERE (TARGET='ORGYN') and (KEY='DECMETA');
+NOTE: The data set WORK.EMINFO400VCSNP has 1 observations and 3 variables.
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL SETMETADATA >> 
+NOTE: There were 1 observations read from the data set EMWS1.NEURAL2_EMINFO.
+      WHERE (TARGET='ORGYN') and (KEY='DECDATA');
+NOTE: The data set WORK.EMINFO400VCSNP has 1 observations and 3 variables.
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _term >> 
+11778  data WORK.Neural2_OUTFIT;
+11779  set EMWS1.Neural2_EMOUTFIT;
+11780  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.NEURAL2_EMOUTFIT.
+NOTE: The data set WORK.NEURAL2_OUTFIT has 1 observations and 51 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+11781  data work.MdlComp3_TEMP;
+11782  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 TARGET $32 TARGETLABEL $200;
+11783  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+11784     "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11785  retain parent "Neural2" MODEL "Neural2" MODELDESCRIPTION "Default Neural Network" TARGETLABEL "";
+11786  set WORK.Neural2_OUTFIT;
+11787  where upcase(TARGET) = upcase("ORGYN");
+11788  run;
+
+NOTE: There were 1 observations read from the data set WORK.NEURAL2_OUTFIT.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set WORK.MDLCOMP3_TEMP has 1 observations and 54 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.03 seconds
+      
+
+11789  data EMWS1.MdlComp3_EMOUTFIT;
+11790  set EMWS1.MdlComp3_EMOUTFIT work.MdlComp3_TEMP;
+11791  run;
+
+NOTE: There were 4 observations read from the data set EMWS1.MDLCOMP3_EMOUTFIT.
+NOTE: There were 1 observations read from the data set WORK.MDLCOMP3_TEMP.
+NOTE: The data set EMWS1.MDLCOMP3_EMOUTFIT has 5 observations and 54 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.00 seconds
+      
+
+11792  data work.MdlComp3_TEMP;
+11793  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+11794  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+11795     "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11796  retain parent "Neural2" MODEL "Neural2" MODELDESCRIPTION "Default Neural Network" TARGETLABEL "";
+11797  set EMWS1.Neural2_EMCLASSIFICATION;
+11798  where upcase(TARGET) = upcase("ORGYN");
+11799  run;
+
+NOTE: There were 8 observations read from the data set EMWS1.NEURAL2_EMCLASSIFICATION.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set WORK.MDLCOMP3_TEMP has 8 observations and 15 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.01 seconds
+      
+
+11800  data EMWS1.MdlComp3_EMCLASSIFICATION;
+11801  set EMWS1.MdlComp3_EMCLASSIFICATION work.MdlComp3_TEMP;
+11802  run;
+
+NOTE: There were 32 observations read from the data set EMWS1.MDLCOMP3_EMCLASSIFICATION.
+NOTE: There were 8 observations read from the data set WORK.MDLCOMP3_TEMP.
+NOTE: The data set EMWS1.MDLCOMP3_EMCLASSIFICATION has 40 observations and 15 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.01 seconds
+      
+
+11803  data work.MdlComp3_TEMP;
+11804  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+11805  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+11806     "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+11807  retain parent "Neural2" MODEL "Neural2" MODELDESCRIPTION "Default Neural Network" TARGETLABEL "";
+11808  set EMWS1.Neural2_EMEVENTREPORT;
+11809  where upcase(TARGET) = upcase("ORGYN");
+11810  run;
+
+NOTE: There were 2 observations read from the data set EMWS1.NEURAL2_EMEVENTREPORT.
+      WHERE UPCASE(TARGET)='ORGYN';
+NOTE: The data set WORK.MDLCOMP3_TEMP has 2 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.00 seconds
+      
+
+11811  data EMWS1.MdlComp3_EMEVENTREPORT;
+11812  set EMWS1.MdlComp3_EMEVENTREPORT work.MdlComp3_TEMP;
+11813  run;
+
+NOTE: There were 8 observations read from the data set EMWS1.MDLCOMP3_EMEVENTREPORT.
+NOTE: There were 2 observations read from the data set WORK.MDLCOMP3_TEMP.
+NOTE: The data set EMWS1.MDLCOMP3_EMEVENTREPORT has 10 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.00 seconds
+      
+
+*------------------------------------------------------------* 
+* "Compute assessment statistics" 
+*------------------------------------------------------------* 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _INIT >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL SETMETADATA >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL SETMETADATA >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _term >> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _INIT >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL SETMETADATA >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL SETMETADATA >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _term >> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _INIT >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL SETMETADATA >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL SETMETADATA >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _term >> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _INIT >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL SETMETADATA >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL SETMETADATA >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _term >> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _INIT >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL SETMETADATA >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL SETMETADATA >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _term >> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+12806  proc sort data=EMWS1.MdlComp3_EMOUTFIT NOTHREADS;
+12807  by model target;
+12808  run;
+
+NOTE: There were 5 observations read from the data set EMWS1.MDLCOMP3_EMOUTFIT.
+NOTE: The data set EMWS1.MDLCOMP3_EMOUTFIT has 5 observations and 54 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.00 seconds
+      
+
+12809  proc sort data=EMWS1.MdlComp3_EMINDEX NOTHREADS;
+12810  by model target;
+12811  run;
+
+NOTE: There were 5 observations read from the data set EMWS1.MDLCOMP3_EMINDEX.
+NOTE: The data set EMWS1.MDLCOMP3_EMINDEX has 5 observations and 23 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.00 seconds
+      
+
+12812  data EMWS1.MdlComp3_EMOUTFIT;
+12813  merge EMWS1.MdlComp3_EMOUTFIT EMWS1.MdlComp3_EMINDEX;
+12814  label TARGET = "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel,  NOQUOTE))";
+12815  by model target;
+12816  run;
+
+NOTE: There were 5 observations read from the data set EMWS1.MDLCOMP3_EMOUTFIT.
+NOTE: There were 5 observations read from the data set EMWS1.MDLCOMP3_EMINDEX.
+NOTE: The data set EMWS1.MDLCOMP3_EMOUTFIT has 5 observations and 72 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.01 seconds
+      
+
+12817  proc sort data=EMWS1.MdlComp3_EMRANK(keep=DATAROLE DECILE MODEL GAIN LIFT LIFTC RESP RESPC CAP CAPC) out=_temp;
+12818  by MODEL;
+12819  where DECILE=10;
+12820  run;
+
+NOTE: There were 15 observations read from the data set EMWS1.MDLCOMP3_EMRANK.
+      WHERE DECILE=10;
+NOTE: The data set WORK._TEMP has 15 observations and 10 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+12821  data _temp;
+12822  retain _GAIN_ _VGAIN_ _LIFT_ _LIFTC_ _VLIFT_ _VLIFTC_ _RESP_ _RESPC_ _VRESP_ _VRESPC_ _CAP_ _CAPC_ _VCAP_ _VCAPC_ .;
+12823  label _GAIN_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_traingain_vlabel, NOQUOTE))" _VGAIN_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_validgain_vlabel, NOQUOTE))" _LIFT_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_trainlift_vlabel, NOQUOTE))" _VLIFT_ =
+12824     "%sysfunc(sasmsg(sashelp.dmine, rpt_validlift_vlabel, NOQUOTE))" _RESP_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_trainresp_vlabel, NOQUOTE))" _VRESP_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_validresp_vlabel, NOQUOTE))" _CAP_ =
+12825     "%sysfunc(sasmsg(sashelp.dmine, rpt_traincap_vlabel,  NOQUOTE))" _VCAP_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_validcap_vlabel,  NOQUOTE))" _LIFTC_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_trainliftc_vlabel, NOQUOTE))" _VLIFTC_ =
+12826     "%sysfunc(sasmsg(sashelp.dmine, rpt_validliftc_vlabel, NOQUOTE))" _RESPC_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_trainrespc_vlabel, NOQUOTE))" _VRESPC_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_validrespc_vlabel, NOQUOTE))" _CAPC_ =
+12827     "%sysfunc(sasmsg(sashelp.dmine, rpt_traincapc_vlabel,  NOQUOTE))" _VCAPC_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_validcapc_vlabel,  NOQUOTE))" _TGAIN_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_testgain_vlabel,  NOQUOTE))" _TLIFT_ =
+12828     "%sysfunc(sasmsg(sashelp.dmine, rpt_testlift_vlabel,   NOQUOTE))" _TRESP_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_testresp_vlabel,  NOQUOTE))" _TCAP_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_testcap_vlabel,   NOQUOTE))" _TLIFTC_ =
+12829     "%sysfunc(sasmsg(sashelp.dmine, rpt_testliftc_vlabel,   NOQUOTE))" _TRESPC_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_testrespc_vlabel,  NOQUOTE))" _TCAPC_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_testcapc_vlabel,   NOQUOTE))";
+12830  set _temp;
+12831  by MODEL;
+12832  if first.MODEL then do;
+12833  _GAIN_=.;
+12834  _VGAIN_=.;
+12835  _TGAIN_=.;
+12836  _LIFT_=.;
+12837  _VLIFT_=.;
+12838  _TLIFT_=.;
+12839  _LIFTC_=.;
+12840  _VLIFTC_=.;
+12841  _TLIFTC_=.;
+12842  _RESP_=.;
+12843  _VRESP_=.;
+12844  _TRESP_=.;
+12845  _RESPC_=.;
+12846  _VRESPC_=.;
+12847  _TRESPC_=.;
+12848  _CAP_=.;
+12849  _VCAP_=.;
+12850  _TCAP_=.;
+12851  _CAPC_=.;
+12852  _VCAPC_=.;
+12853  _VCAPC_=.;
+12854  end;
+12855  select(DATAROLE);
+12856  when('TRAIN') do;
+12857  _GAIN_=GAIN;
+12858  _LIFT_=LIFT;
+12859  _LIFTC_=LIFTC;
+12860  _RESP_=RESP;
+12861  _RESPC_=RESPC;
+12862  _CAP_=CAP;
+12863  _CAPC_=CAPC;
+12864  end;
+12865  when('VALIDATE') do;
+12866  _VGAIN_=GAIN;
+12867  _VLIFT_=LIFT;
+12868  _VLIFTC_=LIFTC;
+12869  _VRESP_=RESP;
+12870  _VRESPC_=RESPC;
+12871  _VCAP_=CAP;
+12872  _VCAPC_=CAPC;
+12873  end;
+12874  when('TEST') do;
+12875  _TGAIN_=GAIN;
+12876  _TLIFT_=LIFT;
+12877  _TLIFTC_=LIFTC;
+12878  _TRESP_=RESP;
+12879  _TRESPC_=RESPC;
+12880  _TCAP_=CAP;
+12881  _TCAPC_=CAPC;
+12882  end;
+12883  otherwise;
+12884  end;
+12885  keep MODEL _GAIN_ _LIFT_ _LIFTC_ _RESP_ _RESPC_ _CAP_ _CAPC_
+12886  _VGAIN_ _VLIFT_ _VLIFTC_ _VRESP_ _VRESPC_ _VCAP_ _VCAPC_
+12887  _TGAIN_ _TLIFT_ _TLIFTC_ _TRESP_ _TRESPC_ _TCAP_ _TCAPC_
+12888  ;
+12889  if last.model then output;
+12890  run;
+
+NOTE: There were 15 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK._TEMP has 5 observations and 22 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.17 seconds
+      cpu time            0.07 seconds
+      
+
+12891  proc sort data=EMWS1.MdlComp3_EMOUTFIT;
+12892  by MODEL;
+12893  run;
+
+NOTE: There were 5 observations read from the data set EMWS1.MDLCOMP3_EMOUTFIT.
+NOTE: The data set EMWS1.MDLCOMP3_EMOUTFIT has 5 observations and 72 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.00 seconds
+      
+
+12894  data EMWS1.MdlComp3_EMOUTFIT;
+12895  merge EMWS1.MdlComp3_EMOUTFIT _temp;
+12896  by MODEL;
+12897  run;
+
+NOTE: There were 5 observations read from the data set EMWS1.MDLCOMP3_EMOUTFIT.
+NOTE: There were 5 observations read from the data set WORK._TEMP.
+NOTE: The data set EMWS1.MDLCOMP3_EMOUTFIT has 5 observations and 93 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.00 seconds
+      
+
+12898  data EMWS1.MdlComp3_EMOUTFIT;
+12899  length PARENT $16 MODEL $16 MODELDESCRIPTION $81 TARGET $32 TARGETLABEL $200 _CRITERION_ 8;
+12900  set EMWS1.MdlComp3_EMOUTFIT;
+12901  label _CRITERION_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_selectioncriterion_vlabel ,  NOQUOTE, %nrbquote(Valid: Misclassification Rate)))";
+12902  _CRITERION_ = _VMISC_;
+12903  run;
+
+NOTE: There were 5 observations read from the data set EMWS1.MDLCOMP3_EMOUTFIT.
+NOTE: The data set EMWS1.MDLCOMP3_EMOUTFIT has 5 observations and 94 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.01 seconds
+      
+
+12904  data EMWS1.MdlComp3_EMOUTFIT;
+12905  length USE $1;
+12906  label USE= "%sysfunc(sasmsg(sashelp.dmine, rpt_selmodel_vlabel,  NOQUOTE))";
+12907  set EMWS1.MdlComp3_EMOUTFIT;
+12908  run;
+
+NOTE: Variable USE is uninitialized.
+NOTE: There were 5 observations read from the data set EMWS1.MDLCOMP3_EMOUTFIT.
+NOTE: The data set EMWS1.MDLCOMP3_EMOUTFIT has 5 observations and 95 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.00 seconds
+      
+
+12909  proc sort data = EMWS1.MdlComp3_EMOUTFIT NOTHREADS;
+12910  by
+12911  _VMISC_
+12912  _VASE_ _ASE_ _MISC_;
+12913  run;
+
+NOTE: There were 5 observations read from the data set EMWS1.MDLCOMP3_EMOUTFIT.
+NOTE: The data set EMWS1.MDLCOMP3_EMOUTFIT has 5 observations and 95 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.00 seconds
+      
+
+12914  %let EM_AUTOMODEL = %str();
+12915  data EMWS1.MdlComp3_EMOUTFIT;
+12916  set EMWS1.MdlComp3_EMOUTFIT;
+12917  drop found;
+12918  retain found 0;
+12919  if found = 0 and _VMISC_ ne . then do;
+12920  use = 'Y';
+12921  found = 1;
+12922  call symput('EM_AUTOMODEL', model);
+12923  end;
+12924  run;
+
+NOTE: There were 5 observations read from the data set EMWS1.MDLCOMP3_EMOUTFIT.
+NOTE: The data set EMWS1.MDLCOMP3_EMOUTFIT has 5 observations and 95 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.00 seconds
+      
+
+12925  title ' ';
+12926  proc print data=EMWS1.MdlComp3_EMOUTFIT noobs label;
+12927  var
+12928  USE
+12929  MODEL
+12930  MODELDESCRIPTION
+12931  _VMISC_
+12932  _ASE_
+12933  _MISC_
+12934  _VASE_
+12935  ;
+12936  title9 "%sysfunc(sasmsg(sashelp.dmine, rpt_fitstat_title,        NOQUOTE))";
+12937  title10 "Model Selection based on Valid: Misclassification Rate (_VMISC_)";
+12938  run;
+
+NOTE: There were 5 observations read from the data set EMWS1.MDLCOMP3_EMOUTFIT.
+NOTE: The PROCEDURE PRINT printed page 17.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12939  title9;
+12940  title10;
+12941  proc transpose data=EMWS1.MdlComp3_EMOUTFIT out= work.modelstats(rename=(_LABEL_=Label _NAME_=STAT));
+12942  ID model;
+12943  by target targetLabel;
+12944  run;
+
+NOTE: There were 5 observations read from the data set EMWS1.MDLCOMP3_EMOUTFIT.
+NOTE: The data set WORK.MODELSTATS has 89 observations and 9 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+12945  data work.modelstats;
+12946  set work.modelstats;
+12947  if substr(STAT, 1, 2) = '_V' or STAT='VKS' then do;
+12948  NumRole=2;
+12949  end;
+12950  else if substr(STAT, 1, 2) = '_T' or STAT='TKS' then do;
+12951  NumRole=3;
+12952  end;
+12953  else if substr(STAT, 1, 1) = '_' or STAT in('KS', 'BINNED_KS_PROB_CUTOFF') then do;
+12954  NumRole=1;
+12955  end;
+12956  run;
+
+NOTE: There were 89 observations read from the data set WORK.MODELSTATS.
+NOTE: The data set WORK.MODELSTATS has 89 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+12957  proc sort data=work.modelstats out=work.modelstats;
+12958  by NumRole STAT;
+12959  run;
+
+NOTE: There were 89 observations read from the data set WORK.MODELSTATS.
+NOTE: The data set WORK.MODELSTATS has 89 observations and 10 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+12960  proc format;
+12961  value RoleFmt 1='Train' 2='Valid' 3='Test';
+NOTE: Format ROLEFMT has been output.
+12962  run;
+
+NOTE: PROCEDURE FORMAT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12963  proc print data= work.modelstats(drop=STAT target targetLabel) noobs label;
+12964  label Label = "%sysfunc(sasmsg(sashelp.dmine, rpt_statistics_vlabel, NOQUOTE))" NumRole= "%sysfunc(sasmsg(sashelp.dmine, rpt_datarole_vlabel,   NOQUOTE))";
+12965  title9 "%sysfunc(sasmsg(sashelp.dmine, rpt_fittable_title, NOQUOTE))";
+12966  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_target_title,   NOQUOTE, ORGYN))";
+12967  by NumRole;
+12968  format NumRole RoleFmt.;
+12969  run;
+
+NOTE: There were 89 observations read from the data set WORK.MODELSTATS.
+NOTE: The PROCEDURE PRINT printed page 18.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.01 seconds
+      
+
+12970  title9;
+12971  title10;
+12972  data EMWS1.MdlComp3_COMPAREFIT;
+12973  length DataRole Target $32 targetlabel $200;
+12974  label DataRole = "%sysfunc(sasmsg(sashelp.dmine, rpt_datarole_vlabel,  NOQUOTE))" STAT = "%sysfunc(sasmsg(sashelp.dmine, rpt_fitstat_vlabel,   NOQUOTE))" LABEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_statlabel_vlabel, NOQUOTE))";
+12975  set work.modelstats;
+12976  DataRole = strip(put(NumRole, Rolefmt.));
+12977  drop NumRole;
+12978  run;
+
+NOTE: There were 89 observations read from the data set WORK.MODELSTATS.
+NOTE: The data set EMWS1.MDLCOMP3_COMPAREFIT has 89 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.01 seconds
+      
+
+12979  %macro ReportFit;
+12980  proc transpose data= EMWS1.MdlComp3_EMOUTFIT(obs=1) out=tempFit;
+12981  run;
+12982  data _null_;
+12983  set tempfit end=eof;
+12984  retain statCount 0;
+12985  if substr(_NAME_,1,2) ^in('_V', '_T', 'TK', 'VK') then do;
+12986  statCount + 1;
+12987  call symput('statName'!!strip(put(statCount,best.)), _NAME_);
+12988  call symput('statLabel'!!strip(put(statCount,best.)), scan(_LABEL_,2, ':'));
+12989  end;
+12990  if eof then do;
+12991  call symput('statCount', strip(put(statCount,best.)));
+12992  end;
+12993  run;
+12994  data EMWS1.MdlComp3_EMREPORTFIT;
+12995  set EMWS1.MdlComp3_EMOUTFIT;
+12996  length FitStat $41 Label $40;
+12997  label FitStat = "%sysfunc(sasmsg(sashelp.dmine, rpt_fitstat_vlabel,   NOQUOTE))" LABEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_statlabel_vlabel, NOQUOTE))";
+12998  %do i=1 %to &statCount;
+12999  FitStat="&&StatName&i";
+13000  Label="&&StatLabel&i";
+13001  Train =&&StatName&i;
+13002  %if &&StatName&i= KS %then %do;
+13003  Validate = VKS;
+13004  Test = TKS;
+13005  %end;
+13006  %else %if &&StatName&i= BINNED_KS_PROB_CUTOFF %then %do;
+13007  Validate = _VBINNED_KS_PROB_CUTOFF_;
+13008  Test = _TBINNED_KS_PROB_CUTOFF_;
+13009  %end;
+13010  %else %do;
+13011  %let VstatName= _V%substr(&&StatName&i,2);
+13012  %let TstatName= _T%substr(&&StatName&i,2);
+13013  Validate=&VStatName;
+13014  Test=&TStatName;
+13015  %end;
+13016  output;
+13017  %end;
+13018  keep Parent Model Target TargetLabel FitStat Label Train Validate Test;
+13019  run;
+13020  %mend;
+13021  %reportFit;
+
+NOTE: There were 1 observations read from the data set EMWS1.MDLCOMP3_EMOUTFIT.
+NOTE: The data set WORK.TEMPFIT has 89 observations and 3 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 89 observations read from the data set WORK.TEMPFIT.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Variable _VCRITERION_ is uninitialized.
+NOTE: Variable _TCRITERION_ is uninitialized.
+NOTE: Variable _VDFT_ is uninitialized.
+NOTE: Variable _TDFT_ is uninitialized.
+NOTE: Variable _VDFE_ is uninitialized.
+NOTE: Variable _TDFE_ is uninitialized.
+NOTE: Variable _VDFM_ is uninitialized.
+NOTE: Variable _TDFM_ is uninitialized.
+NOTE: Variable _VNW_ is uninitialized.
+NOTE: Variable _TNW_ is uninitialized.
+NOTE: Variable _VAIC_ is uninitialized.
+NOTE: Variable _TAIC_ is uninitialized.
+NOTE: Variable _VSBC_ is uninitialized.
+NOTE: Variable _TSBC_ is uninitialized.
+NOTE: Variable _VFPE_ is uninitialized.
+NOTE: Variable _TFPE_ is uninitialized.
+NOTE: Variable _VRFPE_ is uninitialized.
+NOTE: Variable _TRFPE_ is uninitialized.
+NOTE: Variable _VKS_PROB_CUTOFF is uninitialized.
+NOTE: Variable _TKS_PROB_CUTOFF is uninitialized.
+NOTE: There were 5 observations read from the data set EMWS1.MDLCOMP3_EMOUTFIT.
+NOTE: The data set EMWS1.MDLCOMP3_EMREPORTFIT has 175 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.01 seconds
+      
+
+
+13022  proc print data=EMWS1.MdlComp3_EMEVENTREPORT(drop=PARENT) noobs label;
+13023  title9 "%sysfunc(sasmsg(sashelp.dmine, rpt_eventtable_title ,    NOQUOTE))";
+13024  title10 "Model Selection based on Valid: Misclassification Rate (_VMISC_)";
+13025  run;
+
+NOTE: There were 10 observations read from the data set EMWS1.MDLCOMP3_EMEVENTREPORT.
+NOTE: The PROCEDURE PRINT printed page 19.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+13026  title9;
+13027  title10;
+
+13028  proc datasets library=EMWS1 nolist;
+13029  modify MdlComp3_EMRANK;
+13030  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" DATAROLE = "%sysfunc(sasmsg(sashelp.dmine, rpt_datarole_vlabel,  NOQUOTE))" TARGET =
+13031     "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+13032  run;
+
+NOTE: MODIFY was successful for EMWS1.MDLCOMP3_EMRANK.DATA.
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           1.36 seconds
+      cpu time            0.06 seconds
+      
+
+13033  proc sort data=EMWS1.MdlComp3_EMRANK NOTHREADS;
+13034  by descending model target;
+13035  run;
+
+NOTE: There were 300 observations read from the data set EMWS1.MDLCOMP3_EMRANK.
+NOTE: The data set EMWS1.MDLCOMP3_EMRANK has 300 observations and 38 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.00 seconds
+      
+
+13036  proc datasets library=EMWS1 nolist;
+13037  modify MdlComp3_EMSCOREDIST;
+13038  label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" DATAROLE = "%sysfunc(sasmsg(sashelp.dmine, rpt_datarole_vlabel,  NOQUOTE))" TARGET =
+13039     "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+13040  run;
+
+NOTE: MODIFY was successful for EMWS1.MDLCOMP3_EMSCOREDIST.DATA.
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           1.54 seconds
+      cpu time            0.09 seconds
+      
+
+13041  proc sort data=EMWS1.MdlComp3_EMSCOREDIST NOTHREADS;
+13042  by descending model target;
+13043  run;
+
+NOTE: There were 297 observations read from the data set EMWS1.MDLCOMP3_EMSCOREDIST.
+NOTE: The data set EMWS1.MDLCOMP3_EMSCOREDIST has 297 observations and 24 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.00 seconds
+      
+
+13044  proc sort data=EMWS1.MdlComp3_EMROC NOTHREADS;
+13045  by descending model target;
+13046  run;
+
+NOTE: There were 14559 observations read from the data set EMWS1.MDLCOMP3_EMROC.
+NOTE: The data set EMWS1.MDLCOMP3_EMROC has 14559 observations and 18 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.22 seconds
+      cpu time            0.01 seconds
+      
+

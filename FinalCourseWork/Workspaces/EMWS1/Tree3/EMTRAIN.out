@@ -1,0 +1,40 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+            Measurement    Frequency
+Role           Level         Count
+
+ID           INTERVAL          1    
+INPUT        INTERVAL          8    
+INPUT        NOMINAL           6    
+REJECTED     INTERVAL          2    
+TARGET       BINARY            1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Model Events
+
+                                  Number
+                   Measurement      of
+Target    Event       Level       Levels      Order       Label
+
+ORGYN       1        BINARY          2      Descending         
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Predicted and decision variables
+
+Type         Variable    Label
+
+TARGET       ORGYN                         
+PREDICTED    P_ORGYN1    Predicted: ORGYN=1
+RESIDUAL     R_ORGYN1    Residual: ORGYN=1 
+PREDICTED    P_ORGYN0    Predicted: ORGYN=0
+RESIDUAL     R_ORGYN0    Residual: ORGYN=0 
+FROM         F_ORGYN     From: ORGYN       
+INTO         I_ORGYN     Into: ORGYN       

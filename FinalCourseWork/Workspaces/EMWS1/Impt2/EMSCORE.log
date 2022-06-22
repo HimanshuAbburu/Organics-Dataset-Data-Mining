@@ -1,0 +1,144 @@
+*------------------------------------------------------------*
+* Score Log
+Date:                29 November 2021
+Time:                16:10:11
+*------------------------------------------------------------*
+NOTE: This SAS session is using a registry in WORK.  All changes will be lost at the end of this session.
+11752  data _null_;
+11753  set EMWS1.Impt2_META end=eof;
+11754  length string $34;
+11755  retain missTotal;
+11756  file #LN00230;
+11757  if _n_=1 then misstotal = percentmiss;
+11758  missTotal = percentmiss+misstotal;
+11759  if IMP ne '' and METHOD ne 'NONE' then do;
+11760  string = '"'!!strip(NAME)!!'"';
+11761  put 'if NAME = ' string 'then delete;';
+11762  put 'else ';
+11763  string = '"'!!strip(IMP)!!'"';
+11764  put 'if NAME    = ' string ' then do;';
+11765  string = '"'!!strip(ROLE)!!'"';
+11766  put '   ROLE    = ' string ';';
+11767  string = '"'!!strip(FAMILY)!!'"';
+11768  put '   FAMILY  = ' string ';';
+11769  string = '"'!!strip(REPORT)!!'"';
+11770  put '   REPORT  = ' string ';';
+11771  string = '"'!!strip(LEVEL)!!'"';
+11772  put '   LEVEL   = ' string ';';
+11773  string = '"'!!strip(ORDER)!!'"';
+11774  put '   ORDER   = ' string ';';
+11775  put 'end;';
+11776  end;
+11777  if percentmiss>50 and ROLE ne 'TARGET' then do;
+11778  string = '"'!!strip(NAME)!!'"';
+11779  put 'if NAME = ' string ' then do;';
+11780  put '   ROLE ="REJECTED";';
+11781  put '   COMMENT = "Percent of missing exceeds 50%";';
+11782  put 'end;';
+11783  end;
+11784  run;
+
+NOTE: The file #LN00230 is:
+      Filename=H:\DMU_Final Year\Data Mining\FinalCW\FinalCourseWork\Workspaces\EMWS1\Impt2\CDELTA_TRAIN.sas,
+      RECFM=V,LRECL=32767,File Size (bytes)=0,
+      Last Modified=29 November 2021 16:10:11,
+      Create Time=29 November 2021 16:10:11
+
+NOTE: 72 records were written to the file #LN00230.
+      The minimum record length was 4.
+      The maximum record length was 35.
+NOTE: There were 15 observations read from the data set EMWS1.IMPT2_META.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+11785  filename emflow "H:\DMU_Final Year\Data Mining\FinalCW\FinalCourseWork\Workspaces\EMWS1\Impt2\EMFLOWSCORE.sas";
+11786  *------------------------------------------------------------*;
+11787  * Impt2: Scoring DATA data;
+11788  *------------------------------------------------------------*;
+11789  data EMWS1.Impt2_TRAIN
+11790  / view=EMWS1.Impt2_TRAIN
+11791  ;
+11792  set EMWS1.Part_TRAIN
+11793  ;
+11794  %inc emflow;
+11841  run;
+
+NOTE: DATA STEP view saved on file EMWS1.IMPT2_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.01 seconds
+      
+
+11842  quit;
+11843  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+11844  filename emflow "H:\DMU_Final Year\Data Mining\FinalCW\FinalCourseWork\Workspaces\EMWS1\Impt2\EMFLOWSCORE.sas";
+11845  *------------------------------------------------------------*;
+11846  * Impt2: Scoring VALIDATE data;
+11847  *------------------------------------------------------------*;
+11848  data EMWS1.Impt2_VALIDATE
+11849  / view=EMWS1.Impt2_VALIDATE
+11850  ;
+11851  set EMWS1.Part_VALIDATE
+11852  ;
+11853  %inc emflow;
+11900  run;
+
+NOTE: DATA STEP view saved on file EMWS1.IMPT2_VALIDATE.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+11901  quit;
+11902  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+11903  filename emflow "H:\DMU_Final Year\Data Mining\FinalCW\FinalCourseWork\Workspaces\EMWS1\Impt2\EMFLOWSCORE.sas";
+11904  *------------------------------------------------------------*;
+11905  * Impt2: Scoring TEST data;
+11906  *------------------------------------------------------------*;
+11907  data EMWS1.Impt2_TEST
+11908  / view=EMWS1.Impt2_TEST
+11909  ;
+11910  set EMWS1.Part_TEST
+11911  ;
+11912  %inc emflow;
+11959  run;
+
+NOTE: DATA STEP view saved on file EMWS1.IMPT2_TEST.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+11960  quit;
+11961  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+11962  *------------------------------------------------------------*;
+11963  * Impt2: Computing metadata for TRAIN data;
+11964  *------------------------------------------------------------*;
+
+NOTE: View EMWS1.IMPT2_TRAIN.VIEW used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      
+NOTE: View EMWS1.IMPT2_TRAIN.VIEW used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+NOTE: View EMWS1.IMPT2_VALIDATE.VIEW used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+NOTE: View EMWS1.IMPT2_TEST.VIEW used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      

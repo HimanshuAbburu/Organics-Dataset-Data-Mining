@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  NumberOfReportedLevels="1E-6" NormalizeReportingVariables="Y" DecileBin="20" LiftEpsilon="1E-6"
+ ProfitEpsilon="1E-6" RoiEpsilon="1E-6" ScoreDistBin="20" RocChart="Y" RocEpsilon="0.01"
+ AssessAllTargetLevels="N" SelectionData="DEFAULT" HPCriteria="DEFAULT" intervalViyaCriteria="DEFAULT"
+ classViyaCriteria="DEFAULT" SelectionTable="TRAIN" SelectionCriteria="DEFAULT" SelectionDepth="10"
+ NumberofBins="20" RecomputeAssess="N" TargetName="ORGYN" ModelId="Tree" ModelDescription="Decision Tree Default"
+ ModelCriteria="Valid: Misclassification Rate" ForceRun="N" RunAction="Train" Component="ModelCompare"
+ RawCreateTime="1954069130.4" CreateTime="02DEC2021:12:58:50" RunId="58729a55-e983-4cfb-af99-6b888d1410af"
+ StatisticUsed="_VMISC_" TargetLabel="" RawLastTimeRun="1954696134" RawRunTime="29.049000025"
+ LastTimeRun="09DEC2021:19:08:54" RunTime="0 Hr. 0 Min. 29.05 Sec.">
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES/>
+</_ROOT_>

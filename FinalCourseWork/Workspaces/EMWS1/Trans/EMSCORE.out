@@ -1,0 +1,11 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+Formula Transformations
+(maximum 500 observations printed)
+
+Variable             Measurement
+  Name      Role        Level       Formula
+
+INBILL      INPUT     INTERVAL      BILL>0          
+LOGLTIME    INPUT     INTERVAL      LOG10(LTIME + 1)

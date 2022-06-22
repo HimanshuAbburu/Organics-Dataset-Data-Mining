@@ -1,0 +1,70 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+            Measurement    Frequency
+Role           Level         Count
+
+INPUT        INTERVAL          8    
+INPUT        NOMINAL           6    
+REJECTED     INTERVAL          2    
+TARGET       BINARY            1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The CONTENTS Procedure
+
+Data Set Name        EMWS1.FIMPORT_DATA            Observations          10000
+Member Type          DATA                          Variables             17   
+Engine               V9                            Indexes               0    
+Created              29/11/2021 13:15:27           Observation Length    128  
+Last Modified        29/11/2021 13:15:27           Deleted Observations  0    
+Protection                                         Compressed            NO   
+Data Set Type                                      Sorted                NO   
+Label                                                                         
+Data Representation  WINDOWS_64                                               
+Encoding             wlatin1  Western (Windows)                               
+
+
+                                           Engine/Host Dependent Information
+
+Data Set Page Size          65536                                                                                       
+Number of Data Set Pages    20                                                                                          
+First Data Page             1                                                                                           
+Max Obs per Page            511                                                                                         
+Obs in First Data Page      489                                                                                         
+Number of Data Set Repairs  0                                                                                           
+ExtendObsCounter            YES                                                                                         
+Filename                    H:\DMU_Final Year\Data Mining\FinalCW\FinalCourseWork\Workspaces\EMWS1\fimport_data.sas7bdat
+Release Created             9.0401M7                                                                                    
+Host Created                X64_10PRO                                                                                   
+Owner Name                  LEC_ADMIN\P2503016                                                                          
+File Size                   1MB                                                                                         
+File Size (bytes)           1376256                                                                                     
+
+
+      Alphabetic List of Variables and Attributes
+ 
+ #    Variable    Type    Len    Format       Informat
+
+11    AFFL        Num       8    BEST12.      BEST32.  
+ 3    AGE         Num       8    BEST12.      BEST32.  
+ 7    BILL        Num       8    BEST12.      BEST32.  
+ 9    CLASS       Char      8    $8.          $8.      
+ 1    CUSTID      Num       8    BEST12.      BEST32.  
+ 2    GENDER      Char      1    $1.          $1.      
+ 6    LCDATE      Num       8    DDMMYY10.    DDMMYY10.
+12    LTIME       Num       8    BEST12.      BEST32.  
+ 5    NGROUP      Char      1    $1.          $1.      
+13    OAC         Num       8    BEST12.      BEST32.  
+10    ORGYN       Num       8    BEST12.      BEST32.  
+ 8    REGION      Char     10    $10.         $10.     
+17    S_CONV      Num       8    BEST12.      BEST32.  
+15    S_FVEG      Num       8    BEST12.      BEST32.  
+14    S_MT        Num       8    BEST12.      BEST32.  
+16    S_TOIL      Num       8    BEST12.      BEST32.  
+ 4    TV_REG      Char     12    $12.         $12.     

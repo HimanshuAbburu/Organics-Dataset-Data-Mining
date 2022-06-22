@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  NumberOfReportedLevels="1E-6" NormalizeReportingVariables="Y" DecileBin="20" LiftEpsilon="1E-6"
+ ProfitEpsilon="1E-6" RoiEpsilon="1E-6" ScoreDistBin="20" RocChart="Y" RocEpsilon="0.01"
+ AssessAllTargetLevels="N" SelectionData="DEFAULT" HPCriteria="DEFAULT" intervalViyaCriteria="DEFAULT"
+ classViyaCriteria="DEFAULT" SelectionTable="TRAIN" SelectionCriteria="DEFAULT" SelectionDepth="10"
+ NumberofBins="20" RecomputeAssess="N" TargetName="ORGYN" ModelId="Reg9" ModelDescription="Imputed Step Regression"
+ ModelCriteria="Valid: Misclassification Rate" ForceRun="N" RunAction="Train" Component="ModelCompare"
+ RawCreateTime="1954690456" CreateTime="09DEC2021:17:34:16" RunId="b1b86ddd-5d02-4456-a0f2-a75b73bd25ed"
+ StatisticUsed="_VMISC_" TargetLabel="" RawLastTimeRun="1954690497.1" RawRunTime="34.453999996"
+ LastTimeRun="09DEC2021:17:34:57" RunTime="0 Hr. 0 Min. 34.45 Sec.">
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES/>
+</_ROOT_>

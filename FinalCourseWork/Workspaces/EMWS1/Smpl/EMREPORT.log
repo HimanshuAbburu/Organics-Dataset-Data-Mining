@@ -1,0 +1,268 @@
+*------------------------------------------------------------*
+* Report Log
+Date:                30 November 2021
+Time:                13:03:15
+*------------------------------------------------------------*
+12046  *------------------------------------------------------------*;
+12047  * Smpl: Computing statistics for class target variables;
+12048  *------------------------------------------------------------*;
+12049  ods listing close;
+12050  ods output onewayfreqs=WORK.TEMPFREQ;
+12051  proc freq data = EMWS1.Smpl_DATA order=formatted addnames;
+12052  table ORGYN / missing;
+12053  run;
+
+NOTE: The data set WORK.TEMPFREQ has 2 observations and 8 variables.
+NOTE: There were 2964 observations read from the data set EMWS1.SMPL_DATA.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+12054  quit;
+12055  ods listing;
+12056  data WORK.Smpl_BAR(keep=_VARIABLE_ TYPE COUNT PERCENT _X_ _XLABEL_);
+12057  label _VARIABLE_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel, NOQUOTE))" Type = "%sysfunc(sasmsg(sashelp.dmine, rpt_type_vlabel,         NOQUOTE))" _X_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_numValue_vlabel, NOQUOTE))" _XLABEL_ =
+12058     "%sysfunc(sasmsg(sashelp.dmine, rpt_fmtValue_vlabel ,    NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel,        NOQUOTE))" PERCENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_percent_vlabel,      NOQUOTE))";
+12059  dsid = open("WORK.TEMPFREQ");
+12060  varnum = varnum(dsid, 'VARIABLE');
+12061  freqnum = varnum(dsid, 'FREQUENCY');
+12062  pvarnum = varnum(dsid, 'PERCENT');
+12063  typenum = varnum(dsid, '_TYPE_');
+12064  length _VARIABLE_ $32 TYPE $1 _XLABEL_ $32;
+12065  do while(^fetch(dsid));
+12066  _VARIABLE_ = strip(getvarc(dsid, varnum));
+12067  count = getvarn(dsid, freqnum);
+12068  percent= getvarn(dsid, pvarnum);
+12069  vvarnum = varnum(dsid, _VARIABLE_);
+12070  type = vartype(dsid, vvarnum);
+12071  fvarnum = varnum(dsid, 'F_'!!substr(_VARIABLE_, 1, 30));
+12072  _XLABEL_ = left(getvarc(dsid, fvarnum));
+12073  _X_ = .;
+12074  if TYPE eq 'N' then _X_ = getvarn(dsid, vvarnum);
+12075  output;
+12076  end;
+12077  dsid = close(dsid);
+12078  run;
+
+NOTE: The data set WORK.SMPL_BAR has 2 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.03 seconds
+      
+
+12079  proc sort data=WORK.Smpl_BAR NOTHREADS;
+12080  by _VARIABLE_;
+12081  run;
+
+NOTE: There were 2 observations read from the data set WORK.SMPL_BAR.
+NOTE: The data set WORK.SMPL_BAR has 2 observations and 6 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+12082  proc sort data=WORK.M03D7B4Z;
+12083  by Name;
+12084  run;
+
+NOTE: There were 1 observations read from the data set WORK.M03D7B4Z.
+NOTE: The data set WORK.M03D7B4Z has 1 observations and 21 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+12085  data WORK.Smpl_BAR;
+12086  merge WORK.Smpl_BAR(in=_a) WORK.M03D7B4Z(keep=Name Label Role rename=(Name=_Variable_ Label=_Label_));
+12087  by _Variable_;
+12088  label Role = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel ,  NOQUOTE))";
+12089  label Label = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel , NOQUOTE))";
+12090  if _a then output;
+12091  run;
+
+NOTE: Variable Label is uninitialized.
+WARNING: Multiple lengths were specified for the BY variable _VARIABLE_ by input data sets. This might cause unexpected results.
+NOTE: There were 2 observations read from the data set WORK.SMPL_BAR.
+NOTE: There were 1 observations read from the data set WORK.M03D7B4Z.
+NOTE: The data set WORK.SMPL_BAR has 2 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.00 seconds
+      
+
+12092  data EMWS1.Smpl_CLASS;
+12093  length DATA $6;
+12094  set WORK.Smpl_BAR;
+12095  DATA = 'SAMPLE';
+12096  run;
+
+NOTE: There were 2 observations read from the data set WORK.SMPL_BAR.
+NOTE: The data set EMWS1.SMPL_CLASS has 2 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.00 seconds
+      
+
+12097  ods listing close;
+12098  ods output onewayfreqs=WORK.TEMPFREQ;
+12099  proc freq data = EMWS1.Filter_TRAIN order=formatted addnames;
+12100  table ORGYN / missing;
+12101  run;
+
+NOTE: View EMWS1.FILTER_TRAIN.VIEW used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.03 seconds
+      
+NOTE: There were 4000 observations read from the data set EMWS1.PART_TRAIN.
+NOTE: The data set WORK.TEMPFREQ has 2 observations and 8 variables.
+NOTE: There were 2964 observations read from the data set EMWS1.FILTER_TRAIN.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.03 seconds
+      
+
+12102  quit;
+12103  ods listing;
+12104  data WORK.Smpl_BAR(keep=_VARIABLE_ TYPE COUNT PERCENT _X_ _XLABEL_);
+12105  label _VARIABLE_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel, NOQUOTE))" Type = "%sysfunc(sasmsg(sashelp.dmine, rpt_type_vlabel,         NOQUOTE))" _X_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_numValue_vlabel, NOQUOTE))" _XLABEL_ =
+12106     "%sysfunc(sasmsg(sashelp.dmine, rpt_fmtValue_vlabel ,    NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel,        NOQUOTE))" PERCENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_percent_vlabel,      NOQUOTE))";
+12107  dsid = open("WORK.TEMPFREQ");
+12108  varnum = varnum(dsid, 'VARIABLE');
+12109  freqnum = varnum(dsid, 'FREQUENCY');
+12110  pvarnum = varnum(dsid, 'PERCENT');
+12111  typenum = varnum(dsid, '_TYPE_');
+12112  length _VARIABLE_ $32 TYPE $1 _XLABEL_ $32;
+12113  do while(^fetch(dsid));
+12114  _VARIABLE_ = strip(getvarc(dsid, varnum));
+12115  count = getvarn(dsid, freqnum);
+12116  percent= getvarn(dsid, pvarnum);
+12117  vvarnum = varnum(dsid, _VARIABLE_);
+12118  type = vartype(dsid, vvarnum);
+12119  fvarnum = varnum(dsid, 'F_'!!substr(_VARIABLE_, 1, 30));
+12120  _XLABEL_ = left(getvarc(dsid, fvarnum));
+12121  _X_ = .;
+12122  if TYPE eq 'N' then _X_ = getvarn(dsid, vvarnum);
+12123  output;
+12124  end;
+12125  dsid = close(dsid);
+12126  run;
+
+NOTE: The data set WORK.SMPL_BAR has 2 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.01 seconds
+      
+
+12127  proc sort data=WORK.Smpl_BAR NOTHREADS;
+12128  by _VARIABLE_;
+12129  run;
+
+NOTE: There were 2 observations read from the data set WORK.SMPL_BAR.
+NOTE: The data set WORK.SMPL_BAR has 2 observations and 6 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+12130  proc sort data=WORK.M03D7B4Z;
+12131  by Name;
+12132  run;
+
+NOTE: Input data set is already sorted, no sorting done.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12133  data WORK.Smpl_BAR;
+12134  merge WORK.Smpl_BAR(in=_a) WORK.M03D7B4Z(keep=Name Label Role rename=(Name=_Variable_ Label=_Label_));
+12135  by _Variable_;
+12136  label Role = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel ,  NOQUOTE))";
+12137  label Label = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel , NOQUOTE))";
+12138  if _a then output;
+12139  run;
+
+NOTE: Variable Label is uninitialized.
+WARNING: Multiple lengths were specified for the BY variable _VARIABLE_ by input data sets. This might cause unexpected results.
+NOTE: There were 2 observations read from the data set WORK.SMPL_BAR.
+NOTE: There were 1 observations read from the data set WORK.M03D7B4Z.
+NOTE: The data set WORK.SMPL_BAR has 2 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.00 seconds
+      
+
+12140  data WORK.Smpl_BAR;
+12141  length DATA $6;
+12142  set WORK.Smpl_BAR;
+12143  DATA = 'DATA';
+12144  run;
+
+NOTE: There were 2 observations read from the data set WORK.SMPL_BAR.
+NOTE: The data set WORK.SMPL_BAR has 2 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12145  data EMWS1.Smpl_CLASS;
+12146  set EMWS1.Smpl_CLASS WORK.Smpl_BAR;
+12147  run;
+
+NOTE: There were 2 observations read from the data set EMWS1.SMPL_CLASS.
+NOTE: There were 2 observations read from the data set WORK.SMPL_BAR.
+NOTE: The data set EMWS1.SMPL_CLASS has 4 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.00 seconds
+      
+
+12148  data EMWS1.Smpl_CLASS(rename=(_VARIABLE_=VARIABLE _X_=VALUE _XLABEL_=FORMATTEDVALUE));
+12149  label Data = "%sysfunc(sasmsg(sashelp.dmine, rpt_data_vlabel ,     NOQUOTE))";
+12150  label _VARIABLE_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel , NOQUOTE))";
+12151  label _X_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_numValue_vlabel , NOQUOTE))";
+12152  label _XLABEL_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_fmtValue_vlabel , NOQUOTE))";
+12153  set EMWS1.Smpl_CLASS;
+12154  drop type role;
+12155  run;
+
+NOTE: There were 4 observations read from the data set EMWS1.SMPL_CLASS.
+NOTE: The data set EMWS1.SMPL_CLASS has 4 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.01 seconds
+      
+
+12156  proc sort data=EMWS1.Smpl_CLASS NOTHREADS;
+12157  by DATA;
+12158  run;
+
+NOTE: There were 4 observations read from the data set EMWS1.SMPL_CLASS.
+NOTE: The data set EMWS1.SMPL_CLASS has 4 observations and 7 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.00 seconds
+      
+
+12159  %let _cn = %sysfunc(getoption(CENTER));
+12160  %let _nb = %sysfunc(getoption(NUMBER));
+12161  options nonumber nocenter;
+12162  title;
+12163  proc print data=EMWS1.Smpl_CLASS(obs=500) noobs label;
+12164  by DATA;
+12165  title9 "%sysfunc(sasmsg(sashelp.dmine, rpt_classTargetStats_title, NOQUOTE))";
+12166  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_maxObsPrinted_title, NOQUOTE, 500))";
+12167  run;
+
+NOTE: There were 4 observations read from the data set EMWS1.SMPL_CLASS.
+NOTE: The PROCEDURE PRINT printed page 3.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.00 seconds
+      
+
+12168  title9;
+12169  title10;
+12170  options &_cn &_nb;
+

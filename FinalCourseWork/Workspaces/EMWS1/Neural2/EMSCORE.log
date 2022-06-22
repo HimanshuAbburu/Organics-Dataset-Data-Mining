@@ -1,0 +1,179 @@
+*------------------------------------------------------------*
+* Score Log
+Date:                01 December 2021
+Time:                17:59:39
+*------------------------------------------------------------*
+NOTE: This SAS session is using a registry in WORK.  All changes will be lost at the end of this session.
+11907  data work.outkey;
+11908  set EMWS1.Neural2_OUTKEY;
+11909  if upcase(ROLE) in('HIDDEN', 'STANDARD');
+11910  run;
+
+NOTE: There were 57 observations read from the data set EMWS1.NEURAL2_OUTKEY.
+NOTE: The data set WORK.OUTKEY has 11 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+11911  filename emflow "H:\DMU_Final Year\Data Mining\FinalCW\FinalCourseWork\Workspaces\EMWS1\Neural2\EMFLOWSCORE.sas";
+11912  *------------------------------------------------------------*;
+11913  * Neural2: Scoring DATA data;
+11914  *------------------------------------------------------------*;
+11915  data EMWS1.Neural2_TRAIN
+11916  / view=EMWS1.Neural2_TRAIN
+11917  ;
+11918  set EMWS1.Part_TRAIN
+11919  ;
+11920  %inc emflow;
+12695  run;
+
+NOTE: DATA STEP view saved on file EMWS1.NEURAL2_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.00 seconds
+      
+
+12696  quit;
+12697  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+12698  filename emflow "H:\DMU_Final Year\Data Mining\FinalCW\FinalCourseWork\Workspaces\EMWS1\Neural2\EMFLOWSCORE.sas";
+12699  *------------------------------------------------------------*;
+12700  * Neural2: Scoring VALIDATE data;
+12701  *------------------------------------------------------------*;
+12702  data EMWS1.Neural2_VALIDATE
+12703  / view=EMWS1.Neural2_VALIDATE
+12704  ;
+12705  set EMWS1.Part_VALIDATE
+12706  ;
+12707  %inc emflow;
+13482  run;
+
+NOTE: DATA STEP view saved on file EMWS1.NEURAL2_VALIDATE.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.00 seconds
+      
+
+13483  quit;
+13484  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+13485  filename emflow "H:\DMU_Final Year\Data Mining\FinalCW\FinalCourseWork\Workspaces\EMWS1\Neural2\EMFLOWSCORE.sas";
+13486  *------------------------------------------------------------*;
+13487  * Neural2: Scoring TEST data;
+13488  *------------------------------------------------------------*;
+13489  data EMWS1.Neural2_TEST
+13490  / view=EMWS1.Neural2_TEST
+13491  ;
+13492  set EMWS1.Part_TEST
+13493  ;
+13494  %inc emflow;
+14269  run;
+
+NOTE: DATA STEP view saved on file EMWS1.NEURAL2_TEST.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+14270  quit;
+14271  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+14272  *------------------------------------------------------------*;
+14273  * Neural2: Computing metadata for TRAIN data;
+14274  *------------------------------------------------------------*;
+
+NOTE: View EMWS1.NEURAL2_TRAIN.VIEW used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+14619  data EMWS1.Neural2_EMINFO;
+14620  length TARGET KEY $32 DATA $43;
+14621  input TARGET KEY DATA $;
+14622  cards;
+
+NOTE: The data set EMWS1.NEURAL2_EMINFO has 3 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+14626  run;
+14627  proc sort data = EMWS1.Neural2_EMINFO NOTHREADS;
+14628  by TARGET KEY;
+14629  run;
+
+NOTE: There were 3 observations read from the data set EMWS1.NEURAL2_EMINFO.
+NOTE: The data set EMWS1.NEURAL2_EMINFO has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.00 seconds
+      
+
+14630  proc sort data = EMWS1.FIMPORT_EMINFO OUT=WORK.SORTEDEMINFO NOTHREADS;
+14631  by TARGET KEY;
+14632  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.FIMPORT_EMINFO.
+NOTE: The data set WORK.SORTEDEMINFO has 1 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+14633  proc sort data = EMWS1.Neural2_EMINFO OUT=WORK.TEMP_INFO NOTHREADS;
+14634  by TARGET KEY;
+14635  run;
+
+NOTE: Input data set is already sorted; it has been copied to the output data set.
+NOTE: There were 3 observations read from the data set EMWS1.NEURAL2_EMINFO.
+NOTE: The data set WORK.TEMP_INFO has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+14636  data EMWS1.Neural2_EMINFO;
+14637  merge WORK.SORTEDEMINFO WORK.TEMP_INFO;
+14638  by TARGET KEY;
+14639  run;
+
+NOTE: There were 1 observations read from the data set WORK.SORTEDEMINFO.
+NOTE: There were 3 observations read from the data set WORK.TEMP_INFO.
+NOTE: The data set EMWS1.NEURAL2_EMINFO has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.00 seconds
+      
+
+14640  proc datasets lib=work nolist;
+14641  delete TEMP_INFO SORTEDEMINFO;
+14642  run;
+
+NOTE: Deleting WORK.TEMP_INFO (memtype=DATA).
+NOTE: Deleting WORK.SORTEDEMINFO (memtype=DATA).
+14643  quit;
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: View EMWS1.NEURAL2_TRAIN.VIEW used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+NOTE: View EMWS1.NEURAL2_VALIDATE.VIEW used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+NOTE: View EMWS1.NEURAL2_TEST.VIEW used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      

@@ -1,0 +1,58 @@
+*------------------------------------------------------------*
+User:                P2503016
+Date:                29 November 2021
+Time:                13:16:11
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+INPUT        INTERVAL          8
+INPUT        NOMINAL           6
+REJECTED     INTERVAL          2
+TARGET       BINARY            1
+ 
+ 
+ 
+Computed Transformations
+(maximum 500 observations printed)
+ 
+Input               Input
+Name      Role      Level         Name        Level          Formula
+ 
+AFFL      INPUT    INTERVAL    LOG_AFFL      INTERVAL    log(AFFL  + 1)
+AGE       INPUT    INTERVAL    LOG_AGE       INTERVAL    log(AGE  + 1)
+BILL      INPUT    INTERVAL    LOG_BILL      INTERVAL    log(BILL  + 1)
+LTIME     INPUT    INTERVAL    LOG_LTIME     INTERVAL    log(LTIME  + 1)
+S_CONV    INPUT    INTERVAL    LOG_S_CONV    INTERVAL    log(S_CONV  + 1)
+S_FVEG    INPUT    INTERVAL    LOG_S_FVEG    INTERVAL    log(S_FVEG  + 1)
+S_MT      INPUT    INTERVAL    LOG_S_MT      INTERVAL    log(S_MT  + 1)
+S_TOIL    INPUT    INTERVAL    LOG_S_TOIL    INTERVAL    log(S_TOIL  + 1)
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+Formula Transformations
+(maximum 500 observations printed)
+ 
+Variable             Measurement
+  Name      Role        Level       Formula
+ 
+INBILL      INPUT     INTERVAL      BILL>0
+LOGLTIME    INPUT     INTERVAL      LOG10(LTIME + 1)
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*

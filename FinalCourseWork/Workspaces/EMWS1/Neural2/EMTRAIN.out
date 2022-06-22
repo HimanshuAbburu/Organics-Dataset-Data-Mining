@@ -1,0 +1,461 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+            Measurement    Frequency
+Role           Level         Count
+
+INPUT        INTERVAL          8    
+INPUT        NOMINAL           6    
+REJECTED     INTERVAL          2    
+TARGET       BINARY            1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Model Events
+
+                                  Number
+                   Measurement      of
+Target    Event       Level       Levels      Order       Label
+
+ORGYN       1        BINARY          2      Descending         
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Predicted and decision variables
+
+Type         Variable    Label
+
+TARGET       ORGYN                         
+PREDICTED    P_ORGYN1    Predicted: ORGYN=1
+RESIDUAL     R_ORGYN1    Residual: ORGYN=1 
+PREDICTED    P_ORGYN0    Predicted: ORGYN=0
+RESIDUAL     R_ORGYN0    Residual: ORGYN=0 
+FROM         F_ORGYN     From: ORGYN       
+INTO         I_ORGYN     Into: ORGYN       
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The NEURAL Procedure
+
+Preliminary       Starting         Objective         Number
+ Training          Random           Function           of        Terminating
+    Run             Seed             Value         Iterations     Criteria
+
+        1               12345    0.448177478025           10                
+        2          1685054608    0.423979290314           10                
+        3            37160956    0.433751525109           10                
+        4           124609486    0.430094923466           10                
+        5          1615307595    0.425249513468           10                
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The NEURAL Procedure
+
+                   Optimization Start
+                   Parameter Estimates
+                                                Gradient
+                                               Objective
+  N Parameter                   Estimate        Function
+
+  1 AFFL_H11                   -0.483005       -0.005044
+  2 AGE_H11                     0.019892       -0.006660
+  3 BILL_H11                    0.291178       -0.015388
+  4 LTIME_H11                  -0.017459        0.003823
+  5 S_CONV_H11                  0.108265        0.001853
+  6 S_FVEG_H11                  0.245540        0.006080
+  7 S_MT_H11                    0.114174       -0.004788
+  8 S_TOIL_H11                  0.006027        0.002804
+  9 AFFL_H12                   -0.442287       -0.003167
+ 10 AGE_H12                     0.576139       -0.030022
+ 11 BILL_H12                   -0.178348       -0.031348
+ 12 LTIME_H12                   0.052061       -0.002754
+ 13 S_CONV_H12                 -0.021738       -0.003890
+ 14 S_FVEG_H12                 -0.034918        0.014177
+ 15 S_MT_H12                   -0.078389       -0.020562
+ 16 S_TOIL_H12                 -0.013012        0.009096
+ 17 AFFL_H13                   -0.036275        0.001572
+ 18 AGE_H13                    -0.312327        0.004652
+ 19 BILL_H13                   -0.213611       -0.005685
+ 20 LTIME_H13                  -0.017836        0.001327
+ 21 S_CONV_H13                  0.031686        0.000743
+ 22 S_FVEG_H13                 -0.132368        0.000842
+ 23 S_MT_H13                   -0.421316        0.000559
+ 24 S_TOIL_H13                 -0.127772        0.000389
+ 25 CLASSGold_H11               0.195850       -0.000634
+ 26 CLASSPlatinum_H11           0.013925       -0.004315
+ 27 CLASSSilver_H11             0.084747     0.000083887
+ 28 GENDERF_H11                -0.745706        0.003407
+ 29 GENDERM_H11                -0.085465        0.000119
+ 30 NGROUPA_H11                -0.162627        0.000443
+ 31 NGROUPB_H11                -0.069777       -0.001347
+ 32 NGROUPC_H11                -0.221715        0.001568
+ 33 NGROUPD_H11                -0.234243       -0.000916
+ 34 NGROUPE_H11                -0.117494       -0.000213
+ 35 NGROUPF_H11                -0.407609        0.001926
+ 36 OAC1_H11                    0.135352       -0.000635
+ 37 OAC2_H11                   -0.070676       -0.001749
+ 38 OAC3_H11                    0.002242       -0.002652
+ 39 OAC4_H11                   -0.130123       -0.002022
+ 40 OAC5_H11                   -0.017610       -0.002113
+ 41 OAC6_H11                   -0.064275       -0.003562
+ 42 OAC7_H11                    0.005550       -0.002793
+ 43 REGIONMidlands_H11          0.006535       -0.003014
+ 44 REGIONNorth_H11             0.000331        0.000414
+ 45 REGIONScottish_H11          0.140252        0.000578
+ 46 REGIONSouthEast_H11        -0.034295       -0.000227
+ 47 TV_REGBorder_H11            0.034232       -0.000188
+ 48 TV_REGCScotland_H11        -0.307724        0.001706
+ 49 TV_REGEast_H11             -0.011681       -0.000870
+ 50 TV_REGLondon_H11            0.023060        0.000159
+ 51 TV_REGMidlands_H11         -0.104666       -0.000809
+ 52 TV_REGNEast_H11             0.233548        0.000844
+ 53 TV_REGNScot_H11             0.160949       -0.000112
+ 54 TV_REGNWest_H11            -0.079739        0.000398
+ 55 TV_REGS_SEast_H11           0.033584        0.000360
+ 56 TV_REGSWest_H11            -0.051273        0.000664
+ 57 TV_REGUlster_H11            0.032472     0.000082158
+ 58 TV_REGWales_West_H11       -0.077974       -0.000507
+ 59 CLASSGold_H12               0.039513       -0.020423
+ 60 CLASSPlatinum_H12          -0.114041       -0.021259
+ 61 CLASSSilver_H12             0.020639       -0.009559
+ 62 GENDERF_H12                -0.466898        0.017905
+ 63 GENDERM_H12                 0.047259        0.004730
+ 64 NGROUPA_H12                -0.089668        0.002474
+ 65 NGROUPB_H12                 0.194033        0.000726
+ 66 NGROUPC_H12                 0.132399        0.001261
+ 67 NGROUPD_H12                 0.049764        0.001946
+ 68 NGROUPE_H12                 0.174970        0.004003
+ 69 NGROUPF_H12                 0.114433        0.009917
+ 70 OAC1_H12                    0.067586       -0.003227
+ 71 OAC2_H12                   -0.090377       -0.002013
+ 72 OAC3_H12                   -0.156208       -0.003673
+ 73 OAC4_H12                    0.165363       -0.002736
+ 74 OAC5_H12                   -0.024501       -0.001833
+ 75 OAC6_H12                    0.041161     0.000075852
+ 76 OAC7_H12                    0.052073       -0.002646
+ 77 REGIONMidlands_H12         -0.139611        0.004259
+ 78 REGIONNorth_H12             0.145148        0.006793
+ 79 REGIONScottish_H12          0.053602        0.001076
+ 80 REGIONSouthEast_H12        -0.074820        0.005321
+ 81 TV_REGBorder_H12           -0.041185       -0.002673
+ 82 TV_REGCScotland_H12        -0.076887        0.000415
+ 83 TV_REGEast_H12              0.019280        0.000142
+ 84 TV_REGLondon_H12            0.016365        0.002952
+ 85 TV_REGMidlands_H12          0.201992        0.000701
+ 86 TV_REGNEast_H12            -0.147648        0.000738
+ 87 TV_REGNScot_H12             0.103273       -0.001002
+ 88 TV_REGNWest_H12            -0.029119        0.001719
+ 89 TV_REGS_SEast_H12          -0.005070       -0.000355
+ 90 TV_REGSWest_H12             0.013098       -0.001113
+ 91 TV_REGUlster_H12           -0.088958       -0.001612
+ 92 TV_REGWales_West_H12        0.095502       -0.000920
+ 93 CLASSGold_H13              -0.382017       -0.001528
+ 94 CLASSPlatinum_H13           0.073612       -0.002815
+ 95 CLASSSilver_H13             0.042998        0.000274
+ 96 GENDERF_H13                -0.016609        0.002660
+ 97 GENDERM_H13                -0.168498        0.000456
+ 98 NGROUPA_H13                 0.296900        0.000141
+ 99 NGROUPB_H13                -0.168154        0.000273
+100 NGROUPC_H13                 0.024650        0.001185
+101 NGROUPD_H13                 0.061650       -0.000197
+102 NGROUPE_H13                 0.065960        0.000289
+103 NGROUPF_H13                -0.205345        0.002272
+104 OAC1_H13                    0.017903        0.000562
+105 OAC2_H13                    0.259413       -0.001173
+106 OAC3_H13                    0.020691       -0.000303
+107 OAC4_H13                   -0.245652        0.000543
+108 OAC5_H13                   -0.100662       -0.000924
+109 OAC6_H13                    0.009616        0.000225
+110 OAC7_H13                    0.290358       -0.000716
+111 REGIONMidlands_H13          0.101366        0.000311
+112 REGIONNorth_H13             0.231151        0.000609
+113 REGIONScottish_H13         -0.033660       -0.000177
+114 REGIONSouthEast_H13         0.163048    -0.000073745
+115 TV_REGBorder_H13            0.034288       -0.000265
+116 TV_REGCScotland_H13        -0.093900        0.000383
+117 TV_REGEast_H13              0.259750       -0.000134
+118 TV_REGLondon_H13            0.151008       -0.001136
+119 TV_REGMidlands_H13         -0.444199        0.001020
+120 TV_REGNEast_H13            -0.411553        0.000775
+121 TV_REGNScot_H13             0.131102       -0.000285
+122 TV_REGNWest_H13             0.088171       -0.000157
+123 TV_REGS_SEast_H13          -0.214204        0.001223
+124 TV_REGSWest_H13             0.034763        0.000311
+125 TV_REGUlster_H13            0.126005       -0.000151
+126 TV_REGWales_West_H13       -0.030606       -0.000565
+127 BIAS_H11                   -0.446098        0.000659
+128 BIAS_H12                    1.352976        0.019943
+129 BIAS_H13                    0.985671        0.002978
+130 H11_ORGYN1                 -1.999298        0.012190
+131 H12_ORGYN1                 -2.793911       -0.008520
+132 H13_ORGYN1                 -0.723230       -0.007434
+133 BIAS_ORGYN1                -0.426128       -0.011892
+
+Value of Objective Function = 0.4239792903
+
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The NEURAL Procedure
+
+Dual Quasi-Newton Optimization
+
+
+Minimum Iterations                                0
+Maximum Iterations                               50
+Maximum Function Calls                   2147483647
+Maximum CPU Time                              14400
+ABSGCONV Gradient Criterion                 0.00001
+GCONV Gradient Criterion                       1E-8
+ABSFCONV Function Criterion                       0
+FCONV Function Criterion                     0.0001
+FCONV2 Function Criterion                         0
+FSIZE Parameter                                   0
+ABSXCONV Parameter Change Criterion               0
+XCONV Parameter Change Criterion                  0
+XSIZE Parameter                                   0
+ABSCONV Function Criterion             0.0016916911
+Line Search Method                                2
+Starting Alpha for Line Search                    1
+Line Search Precision LSPRECISION               0.4
+DAMPSTEP Parameter for Line Search                .
+Singularity Tolerance (SINGULAR)               1E-8
+
+Dual Quasi-Newton Optimization
+
+Dual Broyden - Fletcher - Goldfarb - Shanno Update (DBFGS)
+
+Parameter Estimates             133
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                       0.4239792903
+Max Abs Gradient Element                 0.0313481036                                                       
+
+
+                                                                 Objective     Max Abs                Slope of
+                     Function         Active        Objective     Function    Gradient       Step       Search
+Iter     Restarts       Calls    Constraints         Function       Change     Element       Size    Direction
+
+   1            0           5              0          0.42143      0.00255      0.0200     0.0100       -0.562
+   2            0           9              0          0.41981      0.00162     0.00905      2.000      -0.0017
+   3            0          13              0          0.41870      0.00111     0.00976      2.000      -0.0011
+   4            0          15              0          0.41784     0.000859     0.00733      1.000      -0.0013
+   5            0          19              0          0.41592      0.00192      0.0112      2.000      -0.0021
+   6            0          21              0          0.41506     0.000860      0.0184      4.260      -0.0011
+   7            0          23              0          0.41356      0.00150     0.00919      0.949      -0.0023
+   8            0          25              0          0.41183      0.00173     0.00962      2.275      -0.0016
+   9            0          27              0          0.40978      0.00205     0.00504      2.863      -0.0015
+  10            0          30              0          0.40931     0.000469     0.00391      1.361      -0.0006
+  11            0          32              0          0.40862     0.000690     0.00534      2.583      -0.0005
+  12            0          34              0          0.40798     0.000641     0.00415      2.679      -0.0006
+  13            0          37              0          0.40757     0.000409     0.00268      1.723      -0.0005
+  14            0          39              0          0.40731     0.000268     0.00470      4.165      -0.0002
+  15            0          41              0          0.40694     0.000365     0.00230      1.536      -0.0004
+  16            0          43              0          0.40634     0.000598     0.00203      3.365      -0.0003
+  17            0          46              0          0.40601     0.000327     0.00315      1.525      -0.0004
+  18            0          48              0          0.40563     0.000386     0.00473      4.264      -0.0002
+  19            0          50              0          0.40503     0.000601     0.00271      3.503      -0.0003
+  20            0          53              0          0.40470     0.000331     0.00200      1.574      -0.0004
+  21            0          55              0          0.40450     0.000201     0.00638      7.321      -0.0001
+  22            0          57              0          0.40418     0.000310     0.00216      1.436      -0.0003
+  23            0          59              0          0.40380     0.000380     0.00359      3.020      -0.0003
+  24            0          61              0          0.40368     0.000129     0.00399      4.336      -0.0002
+  25            0          65              0          0.40342     0.000259     0.00201      1.602      -0.0004
+  26            0          67              0          0.40317     0.000245     0.00325      4.760      -0.0001
+  27            0          69              0          0.40278     0.000388     0.00144      2.090      -0.0003
+  28            0          72              0          0.40256     0.000225     0.00202      1.803      -0.0003
+  29            0          74              0          0.40239     0.000165     0.00247      5.784      -0.0001
+  30            0          76              0          0.40220     0.000196     0.00132      1.909      -0.0002
+  31            0          78              0          0.40199     0.000209     0.00216      3.850      -0.0001
+  32            0          81              0          0.40187     0.000121     0.00149      2.110      -0.0001
+  33            0          83              0          0.40167     0.000200     0.00248      3.211      -0.0001
+  34            0          85              0          0.40144     0.000230     0.00283      2.373      -0.0002
+  35            0          87              0          0.40134     0.000100     0.00357      4.501      -0.0001
+  36            0          89              0          0.40120     0.000144     0.00142      1.133      -0.0002
+  37            0          91              0          0.40104     0.000153     0.00223      5.287      -0.0001
+  38            0          93              0          0.40088     0.000159     0.00180      2.773      -0.0001
+  39            0          96              0          0.40079     0.000093     0.00131      2.556      -0.0001
+  40            0          98              0          0.40064     0.000147     0.00181      3.184      -0.0001
+  41            0         100              0          0.40049     0.000149     0.00350      2.851      -0.0001
+  42            0         102              0          0.40032     0.000173     0.00177      2.837      -0.0001
+  43            0         104              0          0.40024     0.000077     0.00213      4.680      -0.0001
+  44            0         106              0          0.40011     0.000132     0.00155      1.001      -0.0002
+  45            0         108              0          0.39996     0.000157     0.00129      2.502      -0.0001
+  46            0         112              0          0.39961     0.000341     0.00172      5.325      -0.0001
+  47            0         115              0          0.39947     0.000139     0.00144      2.613      -0.0001
+  48            0         117              0          0.39927     0.000204     0.00277      3.337      -0.0001
+  49            0         119              0          0.39904     0.000234     0.00312      3.015      -0.0002
+  50            0         121              0          0.39889     0.000151     0.00564      3.094      -0.0002
+
+                                            Optimization Results
+
+Iterations                                         50  Function Calls                                    123
+Gradient Calls                                     57  Active Constraints                                  0
+Objective Function                       0.3988857879  Max Abs Gradient Element                 0.0056396844
+Slope of Search Direction                -0.000189267                                                       
+
+QUANEW needs more than 50 iterations or 2147483647 function calls.                                
+
+WARNING: QUANEW Optimization cannot be completed.
+
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The NEURAL Procedure
+
+                  Optimization Results
+                   Parameter Estimates
+                                                Gradient
+                                               Objective
+  N Parameter                   Estimate        Function
+
+  1 AFFL_H11                   -0.489008        0.000274
+  2 AGE_H11                     0.183168        0.000208
+  3 BILL_H11                    0.988138       -0.000138
+  4 LTIME_H11                  -0.111052        0.001091
+  5 S_CONV_H11                  0.398943       -0.000217
+  6 S_FVEG_H11                  0.507222     0.000025113
+  7 S_MT_H11                    0.197924       -0.000615
+  8 S_TOIL_H11                  0.135642       -0.000665
+  9 AFFL_H12                   -0.372064       -0.000683
+ 10 AGE_H12                     0.773901       -0.000674
+ 11 BILL_H12                   -0.003984        0.005640
+ 12 LTIME_H12                   0.072891        0.001013
+ 13 S_CONV_H12                  0.088279       -0.000513
+ 14 S_FVEG_H12                 -0.111238        0.000974
+ 15 S_MT_H12                    0.060890        0.000516
+ 16 S_TOIL_H12                  0.003056       -0.001014
+ 17 AFFL_H13                   -0.815887        0.000793
+ 18 AGE_H13                    -1.933688        0.000446
+ 19 BILL_H13                   -0.470447        0.000711
+ 20 LTIME_H13                  -0.032043        0.000269
+ 21 S_CONV_H13                 -0.883874        0.000127
+ 22 S_FVEG_H13                  0.156257        0.000207
+ 23 S_MT_H13                   -1.150903       -0.000255
+ 24 S_TOIL_H13                 -0.589951    -0.000060266
+ 25 CLASSGold_H11              -0.001816       -0.000294
+ 26 CLASSPlatinum_H11           0.449708       -0.000570
+ 27 CLASSSilver_H11             0.002291        0.000110
+ 28 GENDERF_H11                -1.630077       -0.000243
+ 29 GENDERM_H11                 0.014897       -0.000351
+ 30 NGROUPA_H11                 0.151711        0.000310
+ 31 NGROUPB_H11                 0.220320        0.000364
+ 32 NGROUPC_H11                -0.872311        0.000269
+ 33 NGROUPD_H11                -0.555253       -0.000569
+ 34 NGROUPE_H11                -0.149040    -0.000057609
+ 35 NGROUPF_H11                -0.505981        0.000172
+ 36 OAC1_H11                    0.374343    -0.000054399
+ 37 OAC2_H11                    0.664308     0.000067524
+ 38 OAC3_H11                    0.627721        0.000299
+ 39 OAC4_H11                   -0.231902        0.000487
+ 40 OAC5_H11                   -0.448517        0.000156
+ 41 OAC6_H11                   -0.140861        0.000276
+ 42 OAC7_H11                   -0.446878       -0.000303
+ 43 REGIONMidlands_H11          0.406812    -0.000087833
+ 44 REGIONNorth_H11            -0.280740    -0.000008311
+ 45 REGIONScottish_H11         -0.272037       -0.000310
+ 46 REGIONSouthEast_H11        -0.236771        0.000202
+ 47 TV_REGBorder_H11           -0.098378     0.000090617
+ 48 TV_REGCScotland_H11        -1.306740    -0.000046388
+ 49 TV_REGEast_H11              1.361597       -0.000464
+ 50 TV_REGLondon_H11            0.010125     0.000013170
+ 51 TV_REGMidlands_H11         -0.664302        0.000276
+ 52 TV_REGNEast_H11             0.157723     0.000041277
+ 53 TV_REGNScot_H11             0.935818       -0.000131
+ 54 TV_REGNWest_H11            -0.229455        0.000173
+ 55 TV_REGS_SEast_H11          -0.033631        0.000399
+ 56 TV_REGSWest_H11             0.137849        0.000198
+ 57 TV_REGUlster_H11           -0.034323     0.000012459
+ 58 TV_REGWales_West_H11       -0.435807        0.000323
+ 59 CLASSGold_H12               0.146585        0.002198
+ 60 CLASSPlatinum_H12          -0.772812        0.001382
+ 61 CLASSSilver_H12             0.292113        0.003316
+ 62 GENDERF_H12                -0.503226       -0.000226
+ 63 GENDERM_H12                 0.197928        0.000193
+ 64 NGROUPA_H12                -0.355515        0.000319
+ 65 NGROUPB_H12                -0.130557        0.000684
+ 66 NGROUPC_H12                -0.014481        0.000604
+ 67 NGROUPD_H12                -0.124740     0.000093651
+ 68 NGROUPE_H12                 0.036713       -0.000118
+ 69 NGROUPF_H12                -0.071475       -0.002354
+ 70 OAC1_H12                    0.253105       -0.000149
+ 71 OAC2_H12                   -0.110462        0.000327
+ 72 OAC3_H12                   -0.182513        0.001483
+ 73 OAC4_H12                    0.068841     0.000078399
+ 74 OAC5_H12                   -0.024194        0.000224
+ 75 OAC6_H12                    0.023558       -0.000235
+ 76 OAC7_H12                    0.044851        0.000151
+ 77 REGIONMidlands_H12         -0.165715        0.000514
+ 78 REGIONNorth_H12             0.169530       -0.000826
+ 79 REGIONScottish_H12          0.125524    -0.000053720
+ 80 REGIONSouthEast_H12        -0.070948        0.000576
+ 81 TV_REGBorder_H12            0.710588        0.000634
+ 82 TV_REGCScotland_H12        -0.309445     0.000050741
+ 83 TV_REGEast_H12             -0.082852        0.000863
+ 84 TV_REGLondon_H12           -0.027819        0.000652
+ 85 TV_REGMidlands_H12          0.186333       -0.000418
+ 86 TV_REGNEast_H12            -0.032913        0.000429
+ 87 TV_REGNScot_H12            -0.333560        0.000214
+ 88 TV_REGNWest_H12            -0.109012       -0.000303
+ 89 TV_REGS_SEast_H12           0.026952        0.000600
+ 90 TV_REGSWest_H12            -0.029431        0.000399
+ 91 TV_REGUlster_H12           -0.062463        0.000277
+ 92 TV_REGWales_West_H12        0.197648        0.001021
+ 93 CLASSGold_H13              -0.721440        0.000580
+ 94 CLASSPlatinum_H13           1.179748     0.000061732
+ 95 CLASSSilver_H13             0.024061     0.000009654
+ 96 GENDERF_H13                 0.385426        0.000995
+ 97 GENDERM_H13                -1.483386     0.000091541
+ 98 NGROUPA_H13                -0.132216       -0.000380
+ 99 NGROUPB_H13                 0.590796        0.000487
+100 NGROUPC_H13                 0.427377       -0.000150
+101 NGROUPD_H13                 0.483252        0.000152
+102 NGROUPE_H13                -0.147658        0.000173
+103 NGROUPF_H13                -0.875232        0.000114
+104 OAC1_H13                   -1.370527     0.000070811
+105 OAC2_H13                   -0.487959        0.000328
+106 OAC3_H13                   -0.589051        0.000752
+107 OAC4_H13                    0.168707        0.000433
+108 OAC5_H13                    0.392173        0.000575
+109 OAC6_H13                   -0.245840        0.000145
+110 OAC7_H13                    1.278544       -0.000170
+111 REGIONMidlands_H13         -0.284820     0.000019883
+112 REGIONNorth_H13             0.229323       -0.000659
+113 REGIONScottish_H13          0.974798    -0.000094735
+114 REGIONSouthEast_H13         0.211742       -0.000553
+115 TV_REGBorder_H13           -0.442305     0.000046603
+116 TV_REGCScotland_H13         0.621718        0.000266
+117 TV_REGEast_H13             -1.219216    -0.000038383
+118 TV_REGLondon_H13            0.787093       -0.000548
+119 TV_REGMidlands_H13          0.007863        0.000231
+120 TV_REGNEast_H13            -1.348115        0.000108
+121 TV_REGNScot_H13             0.527465    -0.000042462
+122 TV_REGNWest_H13             0.649837       -0.000402
+123 TV_REGS_SEast_H13          -1.034368        0.000346
+124 TV_REGSWest_H13            -0.057716        0.000339
+125 TV_REGUlster_H13           -0.014290     0.000012539
+126 TV_REGWales_West_H13        0.237042        0.000192
+127 BIAS_H11                    0.337930        0.000722
+128 BIAS_H12                    1.081934        0.000824
+129 BIAS_H13                    1.893892        0.000347
+130 H11_ORGYN1                 -1.354392       -0.000216
+131 H12_ORGYN1                 -2.628772        0.000419
+132 H13_ORGYN1                 -1.221311        0.000620
+133 BIAS_ORGYN1                -0.291550       -0.000160
+
+Value of Objective Function = 0.3988857879
+

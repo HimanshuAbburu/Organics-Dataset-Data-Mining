@@ -1,0 +1,40 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Summary Statistics for Class Targets
+
+Data=DATA
+
+            Numeric    Formatted    Frequency
+Variable     Value       Value        Count      Percent    Label
+
+ ORGYN         0           0           7566       75.66          
+ ORGYN         1           1           2434       24.34          
+
+
+Data=TEST
+
+            Numeric    Formatted    Frequency
+Variable     Value       Value        Count      Percent    Label
+
+ ORGYN         0           0           2270      75.6667         
+ ORGYN         1           1            730      24.3333         
+
+
+Data=TRAIN
+
+            Numeric    Formatted    Frequency
+Variable     Value       Value        Count      Percent    Label
+
+ ORGYN         0           0           3026       75.65          
+ ORGYN         1           1            974       24.35          
+
+
+Data=VALIDATE
+
+            Numeric    Formatted    Frequency
+Variable     Value       Value        Count      Percent    Label
+
+ ORGYN         0           0           2270      75.6667         
+ ORGYN         1           1            730      24.3333         
